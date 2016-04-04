@@ -1,3 +1,3 @@
 [submodule "plugins/underscoresme-generator/prototype"]
 	path = plugins/underscoresme-generator/prototype
-	url = git@github.com:WebDevStudios/wd_s.git
+	url = https://github.com/WebDevStudios/wd_s.git
