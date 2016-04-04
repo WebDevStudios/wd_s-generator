@@ -1,3 +1,5 @@
+[![Build Status](https://api.travis-ci.org/gregrickaby/wd_s-generator.svg?branch=master)](https://travis-ci.org/gregrickaby/wd_s-generator)
+
 # Theme generator for [wd_s](https://github.com/WebDevStudios/wd_s) based on [Underscores.me](https://github.com/Automattic/underscores.me/) (BETA)
 
 An easy way to spin up a new client theme. (I'm working on setting up a site to house the generator)
