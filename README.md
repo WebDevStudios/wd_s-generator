@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 # [wd_s](https://github.com/WebDevStudios/wd_s) Theme Generator
-=======
-[![Build Status](https://api.travis-ci.org/gregrickaby/wd_s-generator.svg?branch=master)](https://travis-ci.org/gregrickaby/wd_s-generator)
 
-# Theme generator for [wd_s](https://github.com/WebDevStudios/wd_s) based on [Underscores.me](https://github.com/Automattic/underscores.me/) (BETA)
->>>>>>> b897d5ece14c4b2a6c3be8c4d7a61b80a6ef6d2c
-
-An easy way to spin-up a new client theme. [https://wdunderscores.com/](https://wdunderscores.com/)
+An easy way to spin-up a new WordPress theme. [https://wdunderscores.com/](https://wdunderscores.com/)
 
 ## Pre-Installation
 Basic knowledge of the command line and the following dependencies are required to use wd_s:
@@ -17,7 +11,6 @@ Basic knowledge of the command line and the following dependencies are required 
 ```bash
 npm install -g gulp-cli
 ```
-
 
 ## Install Instructions
 
@@ -56,11 +49,7 @@ You are now ready to use wd_s! To get started developing, check out the [Gulp co
 Please use this repository's [issues](https://github.com/gregrickaby/wd_s-generator/issues) to file any tickets with the generator. If you have an issue with wd_s itself, file an [issue](https://github.com/WebDevStudios/wd_s/issues) there.
 
 ## Contributing
-<<<<<<< HEAD
 Contributions are welcome. Please fork and create a [pull request](https://github.com/gregrickaby/wd_s-generator/pulls).
 
 ## Credits
 This generator is based on Automattic's [underscores.me](https://github.com/Automattic/underscores.me).
-=======
-Contributions are welcome. Please fork and create a pull request here: [https://github.com/gregrickaby/wd_s-generator/pulls](https://github.com/gregrickaby/wd_s-generator/pulls)
->>>>>>> b897d5ece14c4b2a6c3be8c4d7a61b80a6ef6d2c
