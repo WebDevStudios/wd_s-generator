@@ -1,29 +1,56 @@
-# Theme generator for [wd_s](https://github.com/WebDevStudios/wd_s) based on [Underscores.me](https://github.com/Automattic/underscores.me/) (BETA)
+# [wd_s](https://github.com/WebDevStudios/wd_s) Theme Generator
 
-An easy way to spin up a new client theme. (I'm working on setting up a site to house the generator)
+An easy way to spin-up a new client theme. [https://wdunderscores.com/](https://wdunderscores.com/)
 
-## Instructions
+## Pre-Installation
+Basic knowledge of the command line and the following dependencies are required to use wd_s:
 
-1) Answer questions and click "Generate"
-
-![Questions](https://dl.dropbox.com/s/1z6xwhc00uavj61/Screenshot%202016-04-04%2010.37.00.jpg?dl=1)
-
-2) The script will do a find-replace and present you with a .zip file. 
-
-3) Download, extract, and place the generated .zip into `/wp-content/themes`.
-
-4) Activate your new theme
-
-5) From the command line, change directories to your new theme directory
+* Node/NPM
+* Gulp CLI 
 
 ```bash
-cd /your-project/wordpress/wp-content/themes/acme-inc
+npm install -g gulp-cli
 ```
 
-6) Run `npm install` and then you're ready to use [Gulp commnands](https://github.com/WebDevStudios/wd_s#gulp-tasks)
+
+## Install Instructions
+
+1) Visit [https://wdunderscores.com/](https://wdunderscores.com/) and answer questions
+
+2) Click "Generate"
+
+3) The script will do a find-replace and give you a .zip file
+
+4) Download, extract, and place your new theme into:
+
+```bash
+/wp-content/themes
+```
+
+5) In the WordPress dashboard, activate your new theme
+
+## Post Installation
+
+1) From the command line, change directories to your new theme directory
+
+```bash
+cd /sites/foo-client/wp-content/themes/foo-theme
+```
+
+2) Install Node dependencies
+
+```bash
+npm install
+```
+![Install and Gulp](https://dl.dropbox.com/s/cj1p6xjz51cpckq/wd_s-install.gif?dl=0)
+
+You are now ready to use wd_s! To get started developing, check out the [Gulp commands](https://github.com/WebDevStudios/wd_s/blob/master/README.md#gulp-tasks).
 
 ## Support
-File issues here: [https://github.com/gregrickaby/wd_s-generator/issues](https://github.com/gregrickaby/wd_s-generator/issues)
+Please use this repository's [issues](https://github.com/gregrickaby/wd_s-generator/issues) to file any tickets with the generator. If you have an issue with wd_s itself, file an [issue](https://github.com/WebDevStudios/wd_s/issues) there.
 
 ## Contributing
-Contributions are welcome. Please fork and create a pull request here: [https://github.com/gregrickaby/wd_s-generator/pulls](https://github.com/gregrickaby/wd_s-generator/pulls)
+Contributions are welcome. Please fork and create a [pull request](https://github.com/gregrickaby/wd_s-generator/pulls).
+
+## Credits
+This generator is based on Automattic's [underscores.me](https://github.com/Automattic/underscores.me).
