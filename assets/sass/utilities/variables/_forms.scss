@@ -3,8 +3,8 @@
 //--------------------------------------------------------------
 
 // Buttons
-$color-button-background: $color-dove-gray;
-$color-button-background-hover: $color-mineshaft;
+$color-button-background: $color-curious-blue;
+$color-button-background-hover: darken( $color-curious-blue, 50 );
 $color-button-text: $color-white;
 
 // Inputs
