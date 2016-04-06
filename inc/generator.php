@@ -22,7 +22,7 @@ class WDS_Theme_Generator {
 	 */
 	public function print_form() { ?>
 
-		<div id="generator-form" class="generator-form-skinny">
+		<div id="generator-form" class="generator-form">
 			<form method="POST">
 				<input type="hidden" name="wds_wdunderscores_generate" value="1" />
 
@@ -68,8 +68,7 @@ class WDS_Theme_Generator {
 				</section><!-- .generator-form-inputs -->
 
 				<div class="generator-form-submit">
-					<input type="submit" name="wds_wdunderscores_generate_submit" value="Generate" />
-					<span class="generator-form-version">Based on <a href="https://github.com/WebDevStudios/wd_s">wd_s from github</a></span>
+					<input type="submit" name="wds_wdunderscores_generate_submit" value="Generate my theme!" />
 				</div><!-- .generator-form-submit -->
 			</form>
 		</div><!-- .generator-form -->
