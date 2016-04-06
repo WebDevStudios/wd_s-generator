@@ -17,10 +17,11 @@ input[type="reset"],
 input[type="submit"] {
 	-webkit-appearance: none; // Remove iOS styles
 	background-color: $color-button-background;
-	border: none;
 	border-radius: 0;
+	border: none;
 	color: $color-button-text;
 	min-height: rem(31);
+	padding: $gutter;
 	vertical-align: top;
 
 	&:hover {
