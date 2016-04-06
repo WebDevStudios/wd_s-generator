@@ -14,14 +14,6 @@
 	}
 }
 
-.site-header,
-.site-footer {
-
-	@include media($tablet-landscape) {
-		padding: 0 2 * $gutter;
-	}
-}
-
 .site-content {
 	margin: rem(20) auto;
 
@@ -30,18 +22,21 @@
 	}
 }
 
-.primary {
-	@include fill-parent;
+.blog {
 
-	@include media($tablet-landscape) {
-		@include span-columns(8);
+	.primary {
+		@include fill-parent;
+
+		@include media($tablet-landscape) {
+			@include span-columns(8);
+		}
 	}
-}
 
-.secondary {
-	@include fill-parent;
+	.secondary {
+		@include fill-parent;
 
-	@include media($tablet-landscape) {
-		@include span-columns(4);
+		@include media($tablet-landscape) {
+			@include span-columns(4);
+		}
 	}
 }
