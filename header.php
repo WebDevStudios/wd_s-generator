@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Wunderscores
+ * @package Wdunderscores
  */
 
 ?><!DOCTYPE html>
@@ -26,7 +26,7 @@
 <body <?php body_class(); ?>>
 <span class="svg-defs"><?php wds_wdunderscores_include_svg_icons(); ?></span>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'wunderscores' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'wdunderscores' ); ?></a>
 
 	<header class="site-header">
 		<div class="wrap">
@@ -45,7 +45,7 @@
 			</div><!-- .site-branding -->
 
 			<nav id="site-navigation" class="main-navigation">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php wds_wdunderscores_do_svg( array( 'icon' => 'bars', 'title' => 'Display Menu' ) ); ?><span class="menu-toggle-text"><?php esc_html_e( 'Menu', 'wunderscores' ); ?></span></button>
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php wds_wdunderscores_do_svg( array( 'icon' => 'bars', 'title' => 'Display Menu' ) ); ?><span class="menu-toggle-text"><?php esc_html_e( 'Menu', 'wdunderscores' ); ?></span></button>
 				<?php
 					wp_nav_menu( array(
 						'theme_location' => 'primary',

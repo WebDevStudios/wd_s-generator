@@ -2,7 +2,7 @@
 /**
  * Custom scripts and styles.
  *
- * @package Wunderscores
+ * @package Wdunderscores
  */
 
 /**
@@ -19,8 +19,8 @@ function wds_wdunderscores_font_url() {
 	 * supported by the following, translate this to 'off'. Do not translate
 	 * into your own language.
 	 */
-	$roboto = _x( 'on', 'Roboto font: on or off', 'wunderscores' );
-	$open_sans = _x( 'on', 'Open Sans font: on or off', 'wunderscores' );
+	$roboto = _x( 'on', 'Roboto font: on or off', 'wdunderscores' );
+	$open_sans = _x( 'on', 'Open Sans font: on or off', 'wdunderscores' );
 
 	if ( 'off' !== $roboto || 'off' !== $open_sans ) {
 		$font_families = array();
@@ -63,43 +63,21 @@ function wds_wdunderscores_scripts() {
 	$suffix = ( true === $debug ) ? '' : '.min';
 
 	// Register styles.
-	wp_register_style( 'wunderscores-google-font', wds_wdunderscores_font_url(), array(), null );
+	wp_register_style( 'wdunderscores-google-font', wds_wdunderscores_font_url(), array(), null );
 
 	// Enqueue styles.
-	wp_enqueue_style( 'wunderscores-google-font' );
+	wp_enqueue_style( 'wdunderscores-google-font' );
 	wp_enqueue_style( 'animate.css' );
-	wp_enqueue_style( 'wunderscores-style', get_stylesheet_directory_uri() . '/style' . $suffix . '.css', array(), $version );
+	wp_enqueue_style( 'wdunderscores-style', get_stylesheet_directory_uri() . '/style' . $suffix . '.css', array(), $version );
 
 	// Enqueue scripts.
-	wp_enqueue_script( 'wunderscores-scripts', get_template_directory_uri() . '/assets/js/project' . $suffix . '.js', array( 'jquery' ), $version, true );
+	wp_enqueue_script( 'wdunderscores-scripts', get_template_directory_uri() . '/assets/js/project' . $suffix . '.js', array( 'jquery' ), $version, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'wds_wdunderscores_scripts' );
-
-
-if ( class_exists( 'WDS_Simple_Page_Builder' ) && version_compare( WDS_Simple_Page_Builder::VERSION, '1.6', '>=' ) ) :
-
-	/**
-	 * Conditionally enqueue styles & scripts via Page Builder.
-	 */
-	function wds_wdunderscores_enqueue_page_builder_scripts() {
-
-		// Get the page builder parts
-		$parts = get_page_builder_parts();
-
-		// // If page builder part exsists, enqueue script
-		// if ( in_array( 'cover-flow' , $parts ) ) {
-		// 	wp_register_script( 'cover-flow', get_stylesheet_directory_uri() . '/js/cover-flow-script.js', array(), $version, true );
-		// 	wp_enqueue_script( 'cover-flow' );
-		// }
-
-	}
-	add_action( 'wds_page_builder_after_load_parts', 'wds_wdunderscores_enqueue_page_builder_scripts' );
-
-endif;
 
 /**
  * Add SVG definitions to <head>.

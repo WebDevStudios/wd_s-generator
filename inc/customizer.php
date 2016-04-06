@@ -1,8 +1,8 @@
 <?php
 /**
- * Wunderscores Theme Customizer.
+ * wdunderscores Theme Customizer.
  *
- * @package Wunderscores
+ * @package Wdunderscores
  */
 
 /**
@@ -19,8 +19,8 @@ function wds_wdunderscores_customize_register( $wp_customize ) {
     $wp_customize->add_section(
         'wds_wdunderscores_social_links_section',
         array(
-            'title'       => esc_html__( 'Social Links', 'wunderscores' ),
-            'description' => esc_html__( 'These are the settings for social links. Please limit the number of social links to 5.', 'wunderscores' ),
+            'title'       => esc_html__( 'Social Links', 'wdunderscores' ),
+            'description' => esc_html__( 'These are the settings for social links. Please limit the number of social links to 5.', 'wdunderscores' ),
             'priority'    => 90,
         )
     );
@@ -41,7 +41,7 @@ function wds_wdunderscores_customize_register( $wp_customize ) {
 	    $wp_customize->add_control(
 	        'wds_wdunderscores_' . $network . '_link',
 	        array(
-	            'label'   => sprintf( esc_html__( '%s Link', 'wunderscores' ), ucwords( $network ) ),
+	            'label'   => sprintf( esc_html__( '%s Link', 'wdunderscores' ), ucwords( $network ) ),
 	            'section' => 'wds_wdunderscores_social_links_section',
 	            'type'    => 'text',
 	        )
@@ -52,7 +52,7 @@ function wds_wdunderscores_customize_register( $wp_customize ) {
     $wp_customize->add_section(
         'wds_wdunderscores_footer_section',
         array(
-            'title'    => esc_html__( 'Footer Customization', 'wunderscores' ),
+            'title'    => esc_html__( 'Footer Customization', 'wdunderscores' ),
             'priority' => 90,
         )
     );
@@ -67,8 +67,8 @@ function wds_wdunderscores_customize_register( $wp_customize ) {
     $wp_customize->add_control(
         'wds_wdunderscores_copyright_text',
         array(
-            'label'       => esc_html__( 'Copyright Text', 'wunderscores' ),
-            'description' => esc_html__( 'The copyright text will be displayed beneath the menu in the footer.', 'wunderscores' ),
+            'label'       => esc_html__( 'Copyright Text', 'wdunderscores' ),
+            'description' => esc_html__( 'The copyright text will be displayed beneath the menu in the footer.', 'wdunderscores' ),
             'section'     => 'wds_wdunderscores_footer_section',
             'type'        => 'text',
             'sanitize'    => 'html'

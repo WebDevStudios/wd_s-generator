@@ -1,10 +1,10 @@
 <?php
 /**
- * Wunderscores functions and definitions.
+ * wdunderscores functions and definitions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package Wunderscores
+ * @package Wdunderscores
  */
 
 if ( ! function_exists( 'wds_wdunderscores_setup' ) ) :
@@ -19,12 +19,12 @@ function wds_wdunderscores_setup() {
 	/**
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on Wunderscores, use a find and replace
-	 * to change 'wunderscores' to the name of your theme in all the template files.
+	 * If you're building a theme based on wdunderscores, use a find and replace
+	 * to change 'wdunderscores' to the name of your theme in all the template files.
 	 * You will also need to update the Gulpfile with the new text domain
 	 * and matching destination POT file.
 	 */
-	load_theme_textdomain( 'wunderscores', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'wdunderscores', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -46,7 +46,7 @@ function wds_wdunderscores_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary Menu', 'wunderscores' ),
+		'primary' => esc_html__( 'Primary Menu', 'wdunderscores' ),
 	) );
 
 	/**
@@ -95,9 +95,9 @@ function wds_wdunderscores_widgets_init() {
 
 	// Define sidebars
 	$sidebars = array(
-		'sidebar-1'  => esc_html__( 'Sidebar 1', 'wunderscores' ),
-	//	'sidebar-2'  => esc_html__( 'Sidebar 2', 'wunderscores' ),
-	//	'sidebar-3'  => esc_html__( 'Sidebar 3', 'wunderscores' ),
+		'sidebar-1'  => esc_html__( 'Sidebar 1', 'wdunderscores' ),
+	//	'sidebar-2'  => esc_html__( 'Sidebar 2', 'wdunderscores' ),
+	//	'sidebar-3'  => esc_html__( 'Sidebar 3', 'wdunderscores' ),
 	);
 
 	// Loop through each sidebar and register
@@ -105,7 +105,7 @@ function wds_wdunderscores_widgets_init() {
 		register_sidebar( array(
 			'name'          => $sidebar_name,
 			'id'            => $sidebar_id,
-			'description'   => sprintf ( esc_html__( 'Widget area for %s', 'wunderscores' ), $sidebar_name ),
+			'description'   => sprintf ( esc_html__( 'Widget area for %s', 'wdunderscores' ), $sidebar_name ),
 			'before_widget' => '<aside class="widget %2$s">',
 			'after_widget'  => '</aside>',
 			'before_title'  => '<h3 class="widget-title">',

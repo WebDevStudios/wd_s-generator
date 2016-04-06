@@ -2,7 +2,7 @@
 /**
  * The template used for displaying page content in buddypress.php
  *
- * @package Wunderscores
+ * @package Wdunderscores
  */
 ?>
 
@@ -11,5 +11,5 @@
 	<div class="entry-content">
 		<?php the_content(); ?>
 	</div><!-- .entry-content -->
-	
+
 </article><!-- #post-## -->

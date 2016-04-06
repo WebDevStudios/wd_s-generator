@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package Wunderscores
+ * @package Wdunderscores
  */
 
 if ( ! function_exists( 'wds_wdunderscores_posted_on' ) ) :
@@ -25,12 +25,12 @@ function wds_wdunderscores_posted_on() {
 	);
 
 	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'wunderscores' ),
+		esc_html_x( 'Posted on %s', 'post date', 'wdunderscores' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
 	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'wunderscores' ),
+		esc_html_x( 'by %s', 'post author', 'wdunderscores' ),
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 
@@ -47,28 +47,28 @@ function wds_wdunderscores_entry_footer() {
 	// Hide category and tag text for pages.
 	if ( 'post' === get_post_type() ) {
 		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( esc_html__( ', ', 'wunderscores' ) );
+		$categories_list = get_the_category_list( esc_html__( ', ', 'wdunderscores' ) );
 		if ( $categories_list && wds_wdunderscores_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'wunderscores' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'wdunderscores' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 		}
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'wunderscores' ) );
+		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'wdunderscores' ) );
 		if ( $tags_list ) {
-						printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'wunderscores' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+						printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'wdunderscores' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 		}
 	}
 
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 		echo '<span class="comments-link">';
-		comments_popup_link( esc_html__( 'Leave a comment', 'wunderscores' ), esc_html__( '1 Comment', 'wunderscores' ), esc_html__( '% Comments', 'wunderscores' ) );
+		comments_popup_link( esc_html__( 'Leave a comment', 'wdunderscores' ), esc_html__( '1 Comment', 'wdunderscores' ), esc_html__( '% Comments', 'wdunderscores' ) );
 		echo '</span>';
 	}
 
 	edit_post_link(
 		sprintf(
 			/* translators: %s: Name of current post */
-			esc_html__( 'Edit %s', 'wunderscores' ),
+			esc_html__( 'Edit %s', 'wdunderscores' ),
 			the_title( '<span class="screen-reader-text">"', '"</span>', false )
 		),
 		'<span class="edit-link">',
@@ -137,12 +137,12 @@ function wds_wdunderscores_get_svg( $args = array() ) {
 
 	// Make sure $args are an array.
 	if ( empty( $args ) ) {
-		return esc_html__( 'Please define default parameters in the form of an array.', 'wunderscores' );
+		return esc_html__( 'Please define default parameters in the form of an array.', 'wdunderscores' );
 	}
 
 	// YUNO define an icon?
 	if ( false === array_key_exists( 'icon', $args ) ) {
-		return esc_html__( 'Please define an SVG icon filename.', 'wunderscores' );
+		return esc_html__( 'Please define an SVG icon filename.', 'wdunderscores' );
 	}
 
 	// Set defaults.

@@ -241,7 +241,7 @@ gulp.task('uglify', ['concat'], function() {
  * Delete the theme's .pot before we create a new one
  */
 gulp.task('clean:pot', function() {
-	return del(['languages/wunderscores.pot']);
+	return del(['languages/wdunderscores.pot']);
 });
 
 /**
@@ -254,9 +254,9 @@ gulp.task('wp-pot', ['clean:pot'], function() {
 	.pipe(plumber({ errorHandler: handleErrors }))
 	.pipe(sort())
 	.pipe(wpPot({
-		domain: 'wunderscores',
-		destFile:'wunderscores.pot',
-		package: 'wunderscores',
+		domain: 'wdunderscores',
+		destFile:'wdunderscores.pot',
+		package: 'wdunderscores',
 		bugReport: 'https://webdevstudios.com',
 		lastTranslator: 'WebDevStudios <wds@webdevstudios.com>',
 		team: 'Team <wds@webdevstudios.com>'

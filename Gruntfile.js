@@ -264,7 +264,7 @@ module.exports = function(grunt) {
 				options: {
 					cwd: '',
 					domainPath: 'languages/',
-					potFilename: 'Wunderscores.pot',
+					potFilename: 'wdunderscores.pot',
 					type: 'wp-theme'
 				}
 			}
