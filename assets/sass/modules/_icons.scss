@@ -1,0 +1,43 @@
+//--------------------------------------------------------------
+// Icons
+//--------------------------------------------------------------
+
+// Social icons <ul>
+.social-icons {
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
+
+	// After 1024px, let's float and text align left
+	@include media($tablet-landscape) {
+		float: left;
+		text-align: left;
+	}
+
+	// Each icon <li>
+	.social-icon {
+		display: inline-block;
+		margin-right: rem(12);
+		vertical-align: top;
+
+		// Loop through all social icons
+		@each $social-color, $color in $social-colors {
+
+			// Set styles on those social icons!
+			.icon-#{$social-color} {
+				@include size(rem(24) rem(24));
+
+				fill: $color-white;
+
+				&:hover {
+					fill: $color;
+				}
+			}
+		}
+
+		// No margin for the last <li> item
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}

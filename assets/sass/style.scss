@@ -1,0 +1,32 @@
+/*
+Theme Name: Wunderscores
+Theme URI: https://wunderscores.com
+Author: WebDevStudios
+Author URI: https://webdevstudios.com
+Description: A spiffy new theme for Wunderscores.com by Greg Rickaby based on wd_s
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: wunderscores
+Tags: custom
+
+This theme, like WordPress, is licensed under the GPL.
+
+Based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+
+Normalizing styles have been helped along thanks to the fine work of
+Bo-Yi Wu (https://github.com/appleboy/), Nicolas Gallagher (https://github.com/necolas), and Jonathan Neal (https://github.com/jonathantneal).
+*/
+
+@import "bourbon";
+@import "utilities/variables/index";
+@import "neat";
+@import "utilities/mixins/index";
+@import "utilities/animate/index";
+
+@import "base/index";
+@import "structure/index";
+@import "modules/index";
+@import "plugins/index";
+@import "views/index";
+@import "widgets/index";

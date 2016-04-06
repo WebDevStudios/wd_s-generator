@@ -2,29 +2,27 @@
 /**
  * The template for displaying the footer.
  *
- * Contains the closing of the id=main div and all content after
+ * Contains the closing of the #content div and all content after.
  *
- * @package Underscores.me
- * @since Underscores.me 1.0
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package Wunderscores
  */
+
 ?>
 
-	</div><!-- #main -->
+	</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="automattic-credit">
-			An <a href="http://automattic.com/" id="automattic-credit-logo">WebDevStudios</a>
-			<?php
-			$words = array( 'Production', 'Joint', 'Medley', 'Experiment', 'Ruckus', 'Invention', 'Creation', 'Thingamajig', 'Opus', 'Brainchild', 'Contraption' );
-			echo $words[ mt_rand( 0, count( $words) -1 ) ];
-			?>
-		</div><!-- .automattic-credit -->
-		<div class="site-info">
-			<?php do_action( 'underscoresme_credits' ); ?>
-			<a href="http://wordpress.org/" title="<?php esc_attr_e( 'A Semantic Personal Publishing Platform', 'underscoresme' ); ?>" rel="generator"><?php printf( __( 'Proudly powered by %s', 'underscoresme' ), 'WordPress' ); ?></a>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon .site-footer -->
-</div><!-- #page .hfeed .site -->
+	<footer class="site-footer">
+		<div class="wrap">
+
+			<div class="site-info">
+				<?php wds_wdunderscores_do_copyright_text(); ?>
+			</div>
+
+		</div><!-- .wrap -->
+	</footer><!-- .site-footer -->
+</div><!-- #page -->
 
 <?php wp_footer(); ?>
 

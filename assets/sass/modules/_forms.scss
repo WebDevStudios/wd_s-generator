@@ -1,0 +1,95 @@
+//--------------------------------------------------------------
+// Forms
+//--------------------------------------------------------------
+
+button,
+input,
+select,
+textarea {
+	font-size: 100%; // Corrects font size not being inherited in all browsers
+	margin: 0; // Addresses margins set differently in IE6/7, F3/4, S5, Chrome
+	vertical-align: baseline; // Improves appearance and consistency in all browsers
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	-webkit-appearance: none; // Remove iOS styles
+	background-color: $color-button-background;
+	border: none;
+	border-radius: 0;
+	color: $color-button-text;
+	min-height: rem(31);
+	vertical-align: top;
+
+	&:hover {
+		background-color: $color-button-background-hover;
+	}
+
+	&:active,
+	&:focus {
+		background-color: $color-button-background-hover;
+	}
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+	padding: 0; // Addresses excess padding in IE8/9
+}
+
+// remove the clear x icon in IE
+input[type="text"]::-ms-clear,
+input[type="search"]::-ms-clear {
+	display: none;
+}
+
+input[type="search"] {
+	-webkit-appearance: textfield; // Addresses appearance set to searchfield in S5, Chrome
+	box-sizing: content-box;
+
+	&::-webkit-search-decoration { // Corrects inner padding displayed oddly in S5, Chrome on OSX
+		-webkit-appearance: none;
+	}
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner { // Corrects inner padding and border displayed oddly in FF3/4 www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
+	border: 0;
+	padding: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+	-webkit-appearance: none; // Remove iOS styles
+	color: $color-input-text;
+	border: 1px solid $color-input-border;
+	border-radius: 0;
+	line-height: 1.45;
+	padding: rem(3) rem(5);
+
+	&:focus {
+		color: $color-input-focus-text;
+	}
+}
+
+textarea {
+	@include size(100% auto);
+
+	overflow: auto; // Removes default vertical scrollbar in IE6/7/8/9
+	vertical-align: top; // Improves readability and alignment in all browsers
+}

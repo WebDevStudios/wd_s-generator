@@ -1,55 +1,89 @@
-# [wd_s](https://github.com/WebDevStudios/wd_s) Theme Generator
+[![Stories in Ready](https://badge.waffle.io/WebDevStudios/wd_s.png?label=ready&title=Ready)](https://waffle.io/WebDevStudios/wd_s)
 
-An easy way to spin-up a new WordPress theme. [https://wdunderscores.com/](https://wdunderscores.com/)
+# wd_s
 
-## Pre-Installation
+This is [WebDevStudios](http://webdevstudios.com) fork of Automattic's [_s](https://github.com/Automattic/_s). wd_s is used as a theme boilerplate for new projects. It contains modern build tools to help developers spin up a bare bones theme quickly. To get started, see the instructions below. As always, your pull requests are welcome!
+
+# Features
+
+* [Gulp](http://gulpjs.com/)
+* [LibSass](http://sass-lang.com/)
+* [PostCSS](https://github.com/postcss/postcss)
+* [Bourbon](http://bourbon.io/)
+* [Neat](http://neat.bourbon.io/)
+* [BrowserSync](https://www.browsersync.io/)
+* and more!
+
+# Pre-Installation
+
 Basic knowledge of the command line and the following dependencies are required to use wd_s:
 
-* Node/NPM
-* Gulp CLI 
+* [Node](http://nodejs.org/)
+* [Gulp CLI](https://github.com/gulpjs/gulp-cli) `npm install -g gulp-cli`
+
+# Installation
+
+1) [Download](https://github.com/WebDevStudios/wd_s/archive/master.zip) and extract the zip into your project's `wp-content/themes` directory and rename `wd_s-master` to fit your needs.
+
+2) From the command line, change directories to your new theme directory
 
 ```bash
-npm install -g gulp-cli
+cd /your-project/wordpress/wp-content/themes/your-theme
 ```
 
-## Install Instructions
+3) Find & Replace
 
-1) Visit [https://wdunderscores.com/](https://wdunderscores.com/) and answer questions
+You'll need to change all instances of the names: `_s`. While this can be a tedious chore, editors like SublimeText can do a global "find & replace" allowing you to do this in under 60 seconds.
 
-2) Click "Generate"
+* Search for: `'_s'` and replace with: `'project-name'` (inside single quotations) to capture the text domain
+* Search for: `_s_` and replace with: `project-name_` to capture all the function names
+* Search for: `Text Domain: _s` and replace with: `Text Domain: project-name` in style.css
+* Search for (and include the leading space): <code>&nbsp;_s</code> and replace with: <code>&nbsp;Project Name</code> (with a space before it) to capture DocBlocks
+* Search for: `_s-` and replace with: `project-name-` to capture prefixed handles
+* Search for `_s.pot` and replace with: `project-name.pot` to capture translation files
+* Search for `_s.com` and replace with: `project-name.dev` to match your local development URL
+* Edit the theme information in the header of style.scss to meet your needs
 
-3) The script will do a find-replace and give you a .zip file
-
-4) Download, extract, and place your new theme into:
-
-```bash
-/wp-content/themes
-```
-
-5) In the WordPress dashboard, activate your new theme
-
-## Post Installation
-
-1) From the command line, change directories to your new theme directory
-
-```bash
-cd /sites/foo-client/wp-content/themes/foo-theme
-```
-
-2) Install Node dependencies
+4) Install Node dependencies
 
 ```bash
 npm install
 ```
 ![Install and Gulp](https://dl.dropbox.com/s/cj1p6xjz51cpckq/wd_s-install.gif?dl=0)
 
-You are now ready to use wd_s! To get started developing, check out the [Gulp commands](https://github.com/WebDevStudios/wd_s/blob/master/README.md#gulp-tasks).
+You are now ready to use wd_s!
 
-## Support
-Please use this repository's [issues](https://github.com/gregrickaby/wd_s-generator/issues) to file any tickets with the generator. If you have an issue with wd_s itself, file an [issue](https://github.com/WebDevStudios/wd_s/issues) there.
+# Gulp Tasks
 
-## Contributing
-Contributions are welcome. Please fork and create a [pull request](https://github.com/gregrickaby/wd_s-generator/pulls).
+From the command line, type any of the following Grunt tasks to perform an action:
 
-## Credits
-This generator is based on Automattic's [underscores.me](https://github.com/Automattic/underscores.me).
+`gulp watch` - Automatically handle changes to CSS, JS, SVGs, and image sprites. Also kicks off BrowserSync.
+
+`gulp icons` - Minify, concatenate, and clean SVG icons.
+
+`gulp i18n` - Scan the theme and create a POT file
+
+`gulp sass:lint` - Run Sass against WordPress code standards
+
+`gulp scripts` - Concatenate and minify javascript files
+
+`gulp sprites` - Generate an image sprite and the associated Sass (sprite.png)
+
+`gulp styles` - Compile, prefix, combine media queries, and minify CSS files
+
+`gulp` - Runs the following tasks at the same time: i18n, icons, scripts, styles, sprites
+
+### What about Grunt?
+
+We're currently making the transition from Grunt to Gulp. For the time being will continue to support both. If you'd prefer to use Grunt:
+
+* Delete package.json
+* Rename package.json-grunt to package.json
+* Type `npm install`
+
+See [Gruntfile.js](https://github.com/WebDevStudios/wd_s/blob/master/Gruntfile.js) for a list of tasks.
+
+# Contributing and Support
+
+Your contributions and [support tickets](https://github.com/WebDevStudios/wd_s/issues) are welcome. Please see our [guidelines](https://github.com/WebDevStudios/wd_s/blob/master/CONTRIBUTING.md) before submitting a pull request.
+

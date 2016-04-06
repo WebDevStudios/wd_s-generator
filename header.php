@@ -1,68 +1,60 @@
 <?php
 /**
- * The Header for our theme.
+ * The header for our theme.
  *
- * Displays all of the <head> section and everything up till <div id="main">
+ * This is the template that displays all of the <head> section and everything up until <div id="content">
  *
- * @package Underscores.me
- * @since Underscores.me 1.0
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package Wunderscores
  */
+
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width" />
-<title><?php
-	/*
-	 * Print the <title> tag based on what is being viewed.
-	 */
-	global $page, $paged;
-
-	wp_title( '|', true, 'right' );
-
-	// Add the blog name.
-	bloginfo( 'name' );
-
-	// Add the blog description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) )
-		echo " | $site_description";
-
-	// Add a page number if necessary:
-	if ( $paged >= 2 || $page >= 2 )
-		echo ' | ' . sprintf( __( 'Page %s', 'underscoresme' ), max( $paged, $page ) );
-
-	?></title>
-<link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico" />
-<!--[if lt IE 9]>
-<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
-<![endif]-->
-
-<?php //TYPEKIT CODE - Konstantin, can you please move this to the enqueue scripts section in the functions.php file? ?>
-<script type="text/javascript" src="//use.typekit.net/qcr7ewy.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+<?php global $is_IE; if ( $is_IE ) : ?>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<?php endif; ?>
+<meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="hfeed site">
-	<header id="masthead" class="site-header" role="banner">
-		<hgroup>
-			<h1 class="site-title"><span class="site-header-bubblewrap"><span class="site-header-bubblewrap-inner"><?php bloginfo( 'name' ); ?></span></span></h1>
-			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-		</hgroup>
-		
-		<?php if ( !is_front_page() ) : ?>
-			<nav role="navigation" class="site-navigation main-navigation">
-				<h1 class="assistive-text"><?php _e( 'Menu', 'underscoresme' ); ?></h1>
-				<div class="assistive-text skip-link"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'underscoresme' ); ?>"><?php _e( 'Skip to content', 'underscoresme' ); ?></a></div>
-				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-			</nav><!-- .site-navigation .main-navigation -->
-		<?php endif; ?>
+<span class="svg-defs"><?php wds_wdunderscores_include_svg_icons(); ?></span>
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'wunderscores' ); ?></a>
 
-	</header><!-- #masthead .site-header -->
+	<header class="site-header">
+		<div class="wrap">
 
-	<div id="main">
+			<div class="site-branding">
+				<?php if ( is_front_page() && is_home() ) : ?>
+					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+				<?php else : ?>
+					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+				<?php endif;
+
+				$description = get_bloginfo( 'description', 'display' );
+				if ( $description || is_customize_preview() ) : ?>
+					<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+				<?php endif; ?>
+			</div><!-- .site-branding -->
+
+			<nav id="site-navigation" class="main-navigation">
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php wds_wdunderscores_do_svg( array( 'icon' => 'bars', 'title' => 'Display Menu' ) ); ?><span class="menu-toggle-text"><?php esc_html_e( 'Menu', 'wunderscores' ); ?></span></button>
+				<?php
+					wp_nav_menu( array(
+						'theme_location' => 'primary',
+						'menu_class'     => 'primary-menu menu dropdown'
+					) );
+				?>
+			</nav><!-- #site-navigation -->
+
+		</div><!-- .wrap -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">

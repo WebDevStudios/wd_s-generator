@@ -1,0 +1,188 @@
+//--------------------------------------------------------------
+// Navigation
+//--------------------------------------------------------------
+
+// Links
+a {
+	color: $color-link;
+
+	&:visited {
+		color: $color-link-visited;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: $color-link-hover;
+	}
+}
+
+// Navicon menu
+.menu-toggle {
+	display: block;
+
+	.icon {
+		@include size(rem(12) rem(14));
+
+		display: inline-block;
+		fill: $color-white;
+		margin-right: rem(5);
+		vertical-align: middle;
+	}
+
+	.menu-toggle-text {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	@include media($phone-landscape) {
+		display: none;
+	}
+}
+
+// Main navigation container
+.main-navigation {
+	@include size(100% auto);
+
+	clear: both;
+	display: block;
+	float: left;
+
+	// Menu area
+	ul {
+		display: none;
+
+		@include media($phone-landscape) {
+			display: block;
+		}
+	}
+
+	&.toggled ul {
+		display: block;
+	}
+}
+
+// Menu defaults
+.menu {
+	@include list-reset;
+
+	li {
+		margin: 0 rem(10) 0 0;
+	}
+
+	ul {
+		@include list-reset;
+	}
+
+	&.menu-horizontal {
+
+		li {
+			display: inline-block;
+		}
+	}
+
+	&.menu-vertical {
+
+		li {
+			margin: 0;
+		}
+
+		a {
+			border-bottom: 1px solid $color-background-hr;
+			padding: rem(10);
+		}
+	}
+
+	&.dropdown {
+
+		// Sub-menu
+		ul {
+			@include position(absolute, rem(24) null null rem(-9999));
+
+			background-color: $color-white;
+			box-shadow: 0 3px 3px rgba($color-black, 0.2);
+			float: left;
+			padding: rem(8);
+			z-index: 99999;
+
+			// Sub-sub menu
+			ul {
+				left: rem(-9999);
+				top: 0;
+			}
+
+			// Sub-menu items
+			li {
+
+				&:hover > ul,
+				&.focus > ul {
+					left: 100%;
+				}
+			}
+
+			// Sub-menu links
+			a {
+				@include size(rem(200) auto);
+			}
+
+			:hover > a,
+			.focus > a {
+			}
+
+			a:hover,
+			a.focus {
+			}
+		}
+
+		// Display sub-menu on hover
+		li:hover > ul,
+		li.focus > ul {
+			left: auto;
+		}
+
+		// Menu items
+		li {
+			float: left;
+			position: relative;
+
+			&:hover > a,
+			&.focus > a {
+			}
+		}
+	}
+
+	// Menu hyperlinks
+	a {
+		display: block;
+		text-decoration: none;
+	}
+
+	// Current items
+	.current_page_item a,
+	.current-menu-item a {
+	}
+}
+
+// Other navigation
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+	.site-main & {
+		margin: 0 0 rem(24) 0;
+		overflow: hidden;
+	}
+
+	& .nav-previous {
+		@include size(50% auto);
+
+		float: left;
+	}
+
+	& .nav-next {
+		@include size(50% auto);
+
+		float: right;
+		text-align: right;
+	}
+}

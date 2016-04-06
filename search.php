@@ -1,41 +1,51 @@
 <?php
 /**
- * The template for displaying Search Results pages.
+ * The template for displaying search results pages.
  *
- * @package Underscores.me
- * @since Underscores.me 1.0
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
+ *
+ * @package Wunderscores
  */
 
 get_header(); ?>
 
-		<section id="primary" class="site-content">
-			<div id="content" role="main">
+	<div class="wrap">
+		<section class="primary content-area">
+			<main id="main" class="site-main" role="main">
 
-			<?php if ( have_posts() ) : ?>
+			<?php
+			if ( have_posts() ) : ?>
 
 				<header class="page-header">
-					<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'underscoresme' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+					<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'wunderscores' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 				</header><!-- .page-header -->
 
-				<?php underscoresme_content_nav( 'nav-above' ); ?>
+				<?php
+				/* Start the Loop */
+				while ( have_posts() ) : the_post();
 
-				<?php /* Start the Loop */ ?>
-				<?php while ( have_posts() ) : the_post(); ?>
+					/**
+					 * Run the loop for the search to output the results.
+					 * If you want to overload this in a child theme then include a file
+					 * called content-search.php and that will be used instead.
+					 */
+					get_template_part( 'template-parts/content', 'search' );
 
-					<?php get_template_part( 'content', 'search' ); ?>
+				endwhile;
 
-				<?php endwhile; ?>
+				the_posts_navigation();
 
-				<?php underscoresme_content_nav( 'nav-below' ); ?>
+			else :
 
-			<?php else : ?>
+				get_template_part( 'template-parts/content', 'none' );
 
-				<?php get_template_part( 'no-results', 'search' ); ?>
+			endif; ?>
 
-			<?php endif; ?>
+			</main><!-- #main -->
+		</section><!-- .primary -->
 
-			</div><!-- #content -->
-		</section><!-- #primary .site-content -->
+		<?php get_sidebar(); ?>
 
-<?php get_sidebar(); ?>
+	</div><!-- .wrap -->
+
 <?php get_footer(); ?>

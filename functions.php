@@ -1,155 +1,152 @@
 <?php
 /**
- * Underscores.me functions and definitions
+ * Wunderscores functions and definitions.
  *
- * @package Underscores.me
- * @since Underscores.me 1.0
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @package Wunderscores
  */
 
-/**
- * Set the content width based on the theme's design and stylesheet.
- *
- * @since Underscores.me 1.0
- */
-if ( ! isset( $content_width ) )
-	$content_width = 640; /* pixels */
-
-if ( ! function_exists( 'underscoresme_setup' ) ):
+if ( ! function_exists( 'wds_wdunderscores_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
- * Note that this function is hooked into the after_setup_theme hook, which runs
- * before the init hook. The init hook is too late for some features, such as indicating
- * support post thumbnails.
- *
- * @since Underscores.me 1.0
+ * Note that this function is hooked into the after_setup_theme hook, which
+ * runs before the init hook. The init hook is too late for some features, such
+ * as indicating support for post thumbnails.
  */
-function underscoresme_setup() {
-
+function wds_wdunderscores_setup() {
 	/**
-	 * Custom template tags for this theme.
+	 * Make theme available for translation.
+	 * Translations can be filed in the /languages/ directory.
+	 * If you're building a theme based on Wunderscores, use a find and replace
+	 * to change 'wunderscores' to the name of your theme in all the template files.
+	 * You will also need to update the Gulpfile with the new text domain
+	 * and matching destination POT file.
 	 */
-	require( get_template_directory() . '/inc/template-tags.php' );
+	load_theme_textdomain( 'wunderscores', get_template_directory() . '/languages' );
+
+	// Add default posts and comments RSS feed links to head.
+	add_theme_support( 'automatic-feed-links' );
 
 	/**
-	 * Underscores.me generator pseudo-plugin
+	 * Let WordPress manage the document title.
+	 * By adding theme support, we declare that this theme does not use a
+	 * hard-coded <title> tag in the document head, and expect WordPress to
+	 * provide it for us.
 	 */
-	require( get_template_directory() . '/plugins/underscoresme-generator/underscoresme-generator.php' );
-
-	// Remove me later:
-	//if ( ! is_admin() && ! isset( $_REQUEST['underscoresme_generate'] ) )
-	//	do_action( 'underscoresme_print_form' );
+	add_theme_support( 'title-tag' );
 
 	/**
-	 * Custom functions that act independently of the theme templates
-	 */
-	//require( get_template_directory() . '/inc/tweaks.php' );
-
-	/**
-	 * Custom Theme Options
-	 */
-	//require( get_template_directory() . '/inc/theme-options/theme-options.php' );
-
-	/**
-	 * WordPress.com-specific functions and definitions
-	 */
-	//require( get_template_directory() . '/inc/wpcom.php' );
-
-	/**
-	 * Make theme available for translation
-	 * Translations can be filed in the /languages/ directory
-	 * If you're building a theme based on Underscores.me, use a find and replace
-	 * to change 'underscoresme' to the name of your theme in all the template files
-	 */
-	load_theme_textdomain( 'underscoresme', get_template_directory() . '/languages' );
-
-	/**
-	 * Add default posts and comments RSS feed links to head
-	 */
-	//add_theme_support( 'automatic-feed-links' );
-
-	/**
-	 * Enable support for Post Thumbnails
+	 * Enable support for Post Thumbnails on posts and pages.
+	 *
+	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
 
-	/**
-	 * This theme uses wp_nav_menu() in one location.
-	 */
-	/*register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'underscoresme' ),
-	) );*/
-
-	/**
-	 * Add support for the Aside Post Formats
-	 */
-	//add_theme_support( 'post-formats', array( 'aside', ) );
-}
-endif; // underscoresme_setup
-add_action( 'after_setup_theme', 'underscoresme_setup' );
-
-/**
- * Register widgetized area and update sidebar with default widgets
- *
- * @since Underscores.me 1.0
- */
-function underscoresme_widgets_init() {
-	register_sidebar( array(
-		'name' => __( 'Sidebar', 'underscoresme' ),
-		'id' => 'sidebar-1',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+	// This theme uses wp_nav_menu() in one location.
+	register_nav_menus( array(
+		'primary' => esc_html__( 'Primary Menu', 'wunderscores' ),
 	) );
+
+	/**
+	 * Switch default core markup for search form, comment form, and comments
+	 * to output valid HTML5.
+	 */
+	add_theme_support( 'html5', array(
+		'search-form',
+		'comment-form',
+		'comment-list',
+		'gallery',
+		'caption',
+	) );
+
+	// Set up the WordPress core custom background feature.
+	add_theme_support( 'custom-background', apply_filters( 'wds_wdunderscores_custom_background_args', array(
+		'default-color' => 'ffffff',
+		'default-image' => '',
+	) ) );
+
+	// Add styles to the post editor
+	add_editor_style( array( 'editor-style.css', wds_wdunderscores_font_url() ) );
+
 }
-//add_action( 'widgets_init', 'underscoresme_widgets_init' );
+endif; // wds_wdunderscores_setup
+add_action( 'after_setup_theme', 'wds_wdunderscores_setup' );
 
 /**
- * Enqueue scripts and styles
+ * Set the content width in pixels, based on the theme's design and stylesheet.
+ *
+ * Priority 0 to make it available to lower priority callbacks.
+ *
+ * @global int $content_width
  */
-function underscoresme_scripts() {
-	global $post;
+function wds_wdunderscores_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'wds_wdunderscores_content_width', 640 );
+}
+add_action( 'after_setup_theme', 'wds_wdunderscores_content_width', 0 );
 
-	wp_enqueue_style( 'style', add_query_arg( 'v', 20140811, get_stylesheet_uri() ) );
-	//wp_enqueue_script( 'underscores-scripts', get_template_directory_uri() . '/js/underscores-scripts.js', array( 'jquery' ), '20120813' );
+/**
+ * Register widget area.
+ *
+ * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+ */
+function wds_wdunderscores_widgets_init() {
 
-	/*wp_enqueue_script( 'small-menu', get_template_directory_uri() . '/js/small-menu.js', array( 'jquery' ), '20120206', true );
+	// Define sidebars
+	$sidebars = array(
+		'sidebar-1'  => esc_html__( 'Sidebar 1', 'wunderscores' ),
+	//	'sidebar-2'  => esc_html__( 'Sidebar 2', 'wunderscores' ),
+	//	'sidebar-3'  => esc_html__( 'Sidebar 3', 'wunderscores' ),
+	);
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
+	// Loop through each sidebar and register
+	foreach ( $sidebars as $sidebar_id => $sidebar_name ) {
+		register_sidebar( array(
+			'name'          => $sidebar_name,
+			'id'            => $sidebar_id,
+			'description'   => sprintf ( esc_html__( 'Widget area for %s', 'wunderscores' ), $sidebar_name ),
+			'before_widget' => '<aside class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+		) );
 	}
 
-	if ( is_singular() && wp_attachment_is_image( $post->ID ) ) {
-		wp_enqueue_script( 'keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
-	}*/
 }
-add_action( 'wp_enqueue_scripts', 'underscoresme_scripts' );
+add_action( 'widgets_init', 'wds_wdunderscores_widgets_init' );
 
 /**
- * Implement the Custom Header feature
+ * Implement the Custom Header feature.
  */
-//require( get_template_directory() . '/inc/custom-header.php' );
+require get_template_directory() . '/inc/custom-header.php';
 
 /**
- * Returns an array of contributors from Github.
+ * Custom template tags for this theme.
  */
-function underscoresme_get_contributors() {
+require get_template_directory() . '/inc/template-tags.php';
 
-	$transient_key = 'underscoresme_contributors';
-	$contributors = get_transient( $transient_key );
-	if ( false !== $contributors )
-		return $contributors;
+/**
+ * Custom functions that act independently of the theme templates.
+ */
+require get_template_directory() . '/inc/extras.php';
 
-	$response = wp_remote_get( 'https://api.github.com/repos/WebDevStudios/wd_s/contributors?per_page=100' );
-	if ( is_wp_error( $response ) )
-		return array();
+/**
+ * Customizer additions.
+ */
+require get_template_directory() . '/inc/customizer.php';
 
-	$contributors = json_decode( wp_remote_retrieve_body( $response ) );
-	if ( ! is_array( $contributors ) )
-		return array();
+/**
+ * Load Jetpack compatibility file.
+ */
+require get_template_directory() . '/inc/jetpack.php';
 
-	set_transient( $transient_key, $contributors, HOUR_IN_SECONDS );
+/**
+ * Load styles and scripts.
+ */
+require get_template_directory() . '/inc/scripts.php';
 
-	return (array) $contributors;
-}
+/**
+ * Load the generator.
+ */
+require get_template_directory() . '/inc/generator.php';
