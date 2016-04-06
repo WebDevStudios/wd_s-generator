@@ -341,31 +341,30 @@ function wds_wdunderscores_do_copyright_text() {
 }
 
 /**
- * Returns an array of contributors from Github.
+ * Display each contributor's gravatar.
  */
-function wds_wdunderscores_get_contributors() {
+function wds_wdunderscores_do_contributors() {
 
-	$transient_key = 'wds_wdunderscores_contributors';
+	$contributors = wds_wdunderscores_get_contributors();
 
-	$contributors = get_transient( $transient_key );
-
-	if ( false !== $contributors ) {
-		return $contributors;
+	if ( empty( $contributors ) ) {
+		return false;
 	}
 
-	$response = wp_remote_get( 'https://api.github.com/repos/WebDevStudios/wd_s/contributors?per_page=100' );
+	$output = '<ul class="contributors">';
 
-	if ( is_wp_error( $response ) ) {
-		return 'There was an error getting a response from Github';
-	}
+		foreach ( $contributors as $contributor ) :
 
-	$contributors = json_decode( wp_remote_retrieve_body( $response ) );
+			$title = sprintf( '@%s with %d %s', $contributor->login, $contributor->contributions, _n( 'contribution', 'contributions', $contributor->contributions ) );
+			$url = sprintf( 'http://github.com/%s', $contributor->login );
+			$avatar_url = add_query_arg( 's', 64, $contributor->avatar_url );
+			$avatar_url = add_query_arg( 'd', esc_url_raw( 'https://secure.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=280' ), $avatar_url );
+			$output .= '<li class="contributor"><a title="' . esc_attr( $title ) . '" href="' . esc_url( $url ) . '"><img class="avatar" src="' . esc_url( $avatar_url ) . '" /></a></li>';
 
-	if ( ! is_array( $contributors ) ) {
-		return array();
-	}
+		endforeach;
 
-	set_transient( $transient_key, $contributors, HOUR_IN_SECONDS );
+	$output .= '</ul>';
 
-	return (array) $contributors;
+	return $output;
 }
+
