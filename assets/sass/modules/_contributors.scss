@@ -1,0 +1,26 @@
+//--------------------------------------------------------------
+// Contributors
+//--------------------------------------------------------------
+
+.contributors {
+	@include list-reset;
+
+	.contributor {
+		@include clearfix;
+
+		float: left;
+		margin-bottom: $gutter;
+
+		.avatar {
+			@include size(rem(64));
+
+			border-radius: 50%;
+			opacity: 0.5;
+			transition: all 0.2s ease-in-out;
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+}
