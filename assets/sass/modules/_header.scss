@@ -2,15 +2,14 @@
 // Header
 //--------------------------------------------------------------
 
-.site-header {
-	border-bottom: 2px solid $color-cod-gray;
-}
-
 .site-title {
 	font-size: rem(48);
 }
 
 .site-description {
 	font-size: rem(24);
-	margin: 0 0 rem(24) 0;
+}
+
+.site-logo {
+	@include size(rem(150) rem(87.5));
 }
