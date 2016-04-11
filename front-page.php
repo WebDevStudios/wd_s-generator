@@ -9,9 +9,10 @@
 
 get_header(); ?>
 
-	<div class="wrap">
 		<div class="primary content-area">
 			<main id="main" class="site-main" role="main">
+
+				<div class="wrap">
 
 				<section class="generator" role="main">
 					<h2>Create your wd_s based theme</h2>
@@ -33,7 +34,8 @@ get_header(); ?>
 					<?php echo wds_wdunderscores_do_contributors(); ?>
 				</section><!-- .contribute -->
 
+				</div><!-- .wrap -->
+
 			</main><!-- #main -->
 		</div><!-- .primary -->
-	</div><!-- .wrap -->
 <?php get_footer(); ?>
