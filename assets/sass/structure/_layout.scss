@@ -14,15 +14,21 @@
 	}
 }
 
-.site-content {
-	margin: rem(20) auto;
-
-	@include media($desktop) {
-		margin: rem(40) auto rem(60);
-	}
+.site-header,
+.site-footer {
+	background-color: $color-cod-gray;
+	color: $color-white;
+	margin: 0 auto;
+	padding: $gutter 0;
 }
 
-.blog {
+.site-content {
+	background-color: $color-gallery;
+	margin: 0 auto;
+}
+
+.blog,
+.single {
 
 	.primary {
 		@include fill-parent;
