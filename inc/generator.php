@@ -28,41 +28,70 @@ class WDS_Theme_Generator {
 
 				<section class="generator-form-inputs">
 					<section class="generator-form-primary">
-						<label for="wdunderscores-name">Theme/Client Name</label>
-						<input type="text" id="wdunderscores-name" name="wds_wdunderscores_name" placeholder="Theme/Client Name" />
-						<p class="description">Acme Inc.</p>
 
-						<label for="wdunderscores-theme-uri">Theme/Client URL</label>
-						<input type="text" id="wdunderscores-theme-uri" name="wds_wdunderscores_theme_uri" placeholder="Theme/Client URL" />
-						<p class="description">https://acmeinc.com</p>
+						<div class="input-group group-one">
+							<div class="field-group">
+								<label for="wdunderscores-name">Theme/Client Name</label>
+								<input type="text" id="wdunderscores-name" name="wds_wdunderscores_name" placeholder="Theme/Client Name" />
+								<p class="description">Acme Inc.</p>
+							</div>
+							<div class="field-group">
+								<label for="wdunderscores-theme-uri">Theme/Client URL</label>
+								<input type="text" id="wdunderscores-theme-uri" name="wds_wdunderscores_theme_uri" placeholder="Theme/Client URL" />
+								<p class="description">https://acmeinc.com</p>
+							</div>
+						</div><!-- .group-one -->
 
-						<label for="wdunderscores-description">Theme Description</label>
-						<input type="text" id="wdunderscores-description" name="wds_wdunderscores_description" placeholder="Theme Description" />
-						<p class="description">A spiffy new theme for Acme Inc. by WebDevStudios based on wd_s</p>
+						<div class="input-group group-two">
+							<div class="field-group">
+								<label for="wdunderscores-description">Theme Description</label>
+								<input type="text" id="wdunderscores-description" name="wds_wdunderscores_description" placeholder="Theme Description" />
+								<p class="description">A spiffy new theme for Acme Inc. by WebDevStudios based on wd_s</p>
+							</div>
+							<div class="field-group">
+								<label for="wdunderscores-functions">Theme Functions Prefix</label>
+								<input type="text" id="wdunderscores-functions" name="wds_wdunderscores_functions" placeholder="Theme Functions Prefix (wds_client)" />
+								<p class="description">Functions prefix. Use underscores: wds_acme</p>
+							</div>
+						</div><!-- .group-two -->
 
-						<label for="wdunderscores-functions">Theme Functions Prefix</label>
-						<input type="text" id="wdunderscores-functions" name="wds_wdunderscores_functions" placeholder="Theme Functions Prefix (wds_client)" />
-						<p class="description">Functions prefix. Use underscores: wds_acme</p>
 
-						<label for="wdunderscores-slug">Theme Text Domain</label>
-						<input type="text" id="wdunderscores-slug" name="wds_wdunderscores_slug" placeholder="Theme Text Domain (wds-client)" />
-						<p class="description">Text domain prefix. Use hyphens: wds-acme</p>
+						<div class="input-group group-three">
+							<div class="field-group">
+								<label for="wdunderscores-slug">Theme Text Domain</label>
+								<input type="text" id="wdunderscores-slug" name="wds_wdunderscores_slug" placeholder="Theme Text Domain (wds-client)" />
+								<p class="description">Text domain prefix. Use hyphens: wds-acme</p>
+							</div>
+							<div class="field-group">
+								<label for="wdunderscores-author">Theme Author</label>
+								<input type="text" id="wdunderscores-author" name="wds_wdunderscores_author" placeholder="Theme Author" />
+								<p class="description">WebDevStudios</p>
+							</div>
+						</div><!-- .group-three -->
 
-						<label for="wdunderscores-author">Theme Author</label>
-						<input type="text" id="wdunderscores-author" name="wds_wdunderscores_author" placeholder="Theme Author" />
-						<p class="description">WebDevStudios</p>
 
-						<label for="wdunderscores-author-uri">Theme Author URL</label>
-						<input type="text" id="wdunderscores-author-uri" name="wds_wdunderscores_author_uri" placeholder="Theme Author URL" />
-						<p class="description">https://webdevstudios.com</p>
+						<div class="input-group group-four">
+							<div class="field-group">
+								<label for="wdunderscores-author-uri">Theme Author URL</label>
+								<input type="text" id="wdunderscores-author-uri" name="wds_wdunderscores_author_uri" placeholder="Theme Author URL" />
+								<p class="description">https://webdevstudios.com</p>
+							</div>
+							<div class="field-group">
+								<label for="wdunderscores-author-email">Theme Author Email</label>
+								<input type="text" id="wdunderscores-author-email" name="wds_wdunderscores_author_email" placeholder="Theme Author Email" />
+								<p class="description">wds@webdevstudios.com</p>
+							</div>
+						</div><!-- .group-four -->
 
-						<label for="wdunderscores-author-email">Theme Author Email</label>
-						<input type="text" id="wdunderscores-author-email" name="wds_wdunderscores_author_email" placeholder="Theme Author Email" />
-						<p class="description">wds@webdevstudios.com</p>
 
-						<label for="wdunderscores-dev-uri">Theme Development URL</label>
-						<input type="text" id="wdunderscores-dev-uri" name="wds_wdunderscores_dev_uri" placeholder="Theme Development URL" />
-						<p class="description">http://acmeinc.dev</p>
+						<div class="input-group group-five">
+							<div class="field-group">
+								<label for="wdunderscores-dev-uri">Theme Development URL</label>
+								<input type="text" id="wdunderscores-dev-uri" name="wds_wdunderscores_dev_uri" placeholder="Theme Development URL" />
+								<p class="description">http://acmeinc.dev</p>
+							</div>
+						</div><!-- .group-five -->
+
 
 					</section><!-- .generator-form-primary-->
 				</section><!-- .generator-form-inputs -->
