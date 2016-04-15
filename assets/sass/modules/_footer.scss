@@ -4,4 +4,9 @@
 
 .site-footer {
 	border-top: 2px solid $color-cod-gray;
+	text-align: center;
+
+	@include media($tablet-landscape) {
+		text-align: left;
+	}
 }
