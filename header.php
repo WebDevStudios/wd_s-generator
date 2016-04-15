@@ -50,16 +50,6 @@
 				<?php endif; ?>
 			</div><!-- .site-branding -->
 
-			<nav id="site-navigation" class="main-navigation">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php wds_wdunderscores_do_svg( array( 'icon' => 'bars', 'title' => 'Display Menu' ) ); ?><span class="menu-toggle-text"><?php esc_html_e( 'Menu', 'wdunderscores' ); ?></span></button>
-				<?php
-					wp_nav_menu( array(
-						'theme_location' => 'primary',
-						'menu_class'     => 'primary-menu menu dropdown'
-					) );
-				?>
-			</nav><!-- #site-navigation -->
-
 		</div><!-- .wrap -->
 	</header><!-- #masthead -->
 
