@@ -31,7 +31,9 @@ get_header(); ?>
 
 				<section class="content-section about">
 					<h2>About</h2>
-					<a href="https://github.com/WebDevStudios/wd_s">wd_s</a> is a fork of Automattic's <a href="https://github.com/Automattic/_s">_s</a>. It's used as the starter theme at <a href="https://webdevstudios.com">WebDevStudios</a>, a leading WordPress development agency.
+					<p>Hi. I'm a starter theme called wd_s, or wdunderscores. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead, try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for!</p>
+					<p>I feature some of the web's most exciting technologies like: Gulp, LibSass, PostCSS, Bourbon, Neat, and BrowserSync to help make your development process fast and efficient. I'm also accessible, passing both WCAG 2.0AA and Section 508 standards out of the box.</p>
+					<p>Find out more about wd_s, <a href="https://webdevstudios.com/tags/wd_s/">on our blog</a> or check us out at <a href="https://github.com/webdevstudios/wd_s">Github</a>.
 				</section><!-- .contribute -->
 
 				<section class="content-section contribute">
