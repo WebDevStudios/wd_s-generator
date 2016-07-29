@@ -172,9 +172,7 @@ class WDS_Theme_Generator {
 		$zip = new ZipArchive;
 		$zip_filename = sprintf( '/tmp/wdunderscores-%s.zip', md5( print_r( $this->theme, true ) ) );
 		$res = $zip->open( $zip_filename, ZipArchive::CREATE && ZipArchive::OVERWRITE );
-
 		$prototype_dir = dirname( __FILE__ ) . '/prototype/';
-
 		$exclude_files = array( '.travis.yml', 'codesniffer.ruleset.xml', 'CONTRIBUTING.md', '.git', '.svn', '.DS_Store', '.gitignore', '.', '..' );
 		$exclude_directories = array( '.git', '.svn', '.', '..' );
 
@@ -246,32 +244,13 @@ class WDS_Theme_Generator {
 			return $contents;
 		}
 
-		// Special treatment for functions.php
-		if ( 'functions.php' == $filename ) {
-			if ( ! $this->theme['wpcom'] ) {
-				// The following hack will remove the WordPress.com comment and include in functions.php.
-				$find = 'WordPress.com-specific functions';
-				$contents = preg_replace( '#/\*\*\n\s+\*\s+' . preg_quote( $find ) . '#i', '@wpcom_start', $contents );
-				$contents = preg_replace( '#/inc/wpcom\.php\';#i', '@wpcom_end', $contents );
-				$contents = preg_replace( '#@wpcom_start(.+)@wpcom_end\n?(\n\s)?#ims', '', $contents );
-			}
-		}
-
-		// Special treatment for footer.php
-		if ( 'footer.php' == $filename ) {
-			// <?php printf( __( 'Theme: %1$s by %2$s.', '_s' ), '_s', '<a href="http://automattic.com/" rel="designer">Automattic</a>' );
-			$contents = str_replace( 'http://automattic.com/', esc_url( $this->theme['author_uri'] ), $contents );
-			$contents = str_replace( 'Automattic', $this->theme['author'], $contents );
-			$contents = preg_replace( "#printf\\((\\s?__\\(\\s?'Theme:[^,]+,[^,]+,)([^,]+),#", sprintf( "printf(\\1 '%s',", esc_attr( $this->theme['name'] ) ), $contents );
-		}
-
 		// Special treatment for Gulpfile.js
 		if ( 'Gulpfile.js' == $filename ) {
 			$contents = str_replace( '_s.pot', $this->theme['slug'] . '.pot', $contents );
 			$contents = str_replace( 'mail@_s.com',  $this->theme['author_email'], $contents );
 			$contents = str_replace( 'John Doe', $this->theme['author'], $contents );
 			$contents = str_replace( 'http://_s.com', esc_url( $this->theme['author_uri'] ), $contents );
-			$contents = str_replace( '_s.com', $this->theme['dev_uri'], $contents );
+			$contents = str_replace( 'testing.dev', esc_url( $this->theme['dev_uri'] ), $contents );
 		}
 
 		// DocBlocks Package
