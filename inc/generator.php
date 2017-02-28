@@ -120,15 +120,15 @@ class WDS_Theme_Generator {
 
 		// Set defaults
 		$this->theme = array(
-			'name'         => 'Theme Name',
-			'slug'         => 'theme-name',
-			'uri'          => 'http://underscores.me/',
+			'name'         => 'Acme Inc.',
+			'slug'         => 'acme-inc',
+			'uri'          => 'https://acmeinc.com',
 			'author'       => 'WebDevStudios',
 			'author_uri'   => 'https://webdevstudios.com/',
 			'author_email' => 'wds@webdevstudios.com',
-			'dev_uri'      => 'http://underscores.dev',
+			'dev_uri'      => 'http://acmeinc.dev',
 			'description'  => 'A spiffy new theme for Acme Inc. by WebDevStudios based on wd_s',
-			'functions'    => 'wds_client',
+			'functions'    => 'wds_acme',
 			'wpcom'        => false,
 		);
 
