@@ -4,13 +4,14 @@
 # runs the build.sh script for those folders.
 
 . "${WORKSPACE}/jenkins-config.sh"
+if [[ -n "${BUILD_FILES+set}" ]]; then
+	message "Build from $DIR";
 
-message "Build from $DIR";
+	for i in "${BUILD_FILES[@]}"; do :
 
-for i in "${BUILD_FILES[@]}"; do :
+		# Build the app directories
+		message "Executing build for $DIR/$i"
+		sh "$DIR/build.sh" "$DIR/$i"
 
-	# Build the app directories
-	message "Executing build for $DIR/$i"
-	sh "$DIR/build.sh" "$DIR/$i"
-
-done
+	done
+fi
