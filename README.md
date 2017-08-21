@@ -45,6 +45,9 @@ npm install
 
 You are now ready to use wd_s! To get started developing, check out the [Gulp commands](https://github.com/WebDevStudios/wd_s/blob/master/README.md#gulp-tasks).
 
+## Changes
+Anytime a commit is pushed to the `master` branch on [wd_s](https://github.com/WebDevStudios/wd_s/), Jenkins automatically deploys the updated to code to the generator.
+
 ## Support
 Please use this repository's [issues](https://github.com/gregrickaby/wd_s-generator/issues) to file any tickets with the generator. If you have an issue with wd_s itself, file an [issue](https://github.com/WebDevStudios/wd_s/issues) there.
 
