@@ -17,12 +17,16 @@ input[type="reset"],
 input[type="submit"] {
 	-webkit-appearance: none; // Remove iOS styles
 	background-color: $color-button-background;
-	border-radius: 0;
+	border-radius: rem(10);
 	border: none;
 	color: $color-button-text;
+	font-size: rem(18);
 	min-height: rem(31);
-	padding: $padding-input;
+	letter-spacing: rem(2);
+	text-transform: uppercase;
+	padding: rem(35) rem(40);
 	vertical-align: top;
+	transition: 0.3s ease-out;
 
 	&:hover {
 		background-color: $color-button-background-hover;
@@ -79,7 +83,7 @@ textarea {
 	-webkit-appearance: none; // Remove iOS styles
 	color: $color-input-text;
 	border: 1px solid $color-input-border;
-	border-radius: 0;
+	border-radius: rem(4);
 	line-height: 1.45;
 	padding: rem(3) rem(5);
 

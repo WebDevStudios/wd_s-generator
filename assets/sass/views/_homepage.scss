@@ -3,10 +3,35 @@
 //--------------------------------------------------------------
 
 .content-section {
+	background-color: $color-white;
+	border-radius: rem(10);
+	box-shadow: 0 rem(2) rem(35) 0 lighten($color-black, 80%);
 	margin-bottom: rem(96);
+	padding: rem(50) rem(40);
 
 	ol {
 		margin: 0 0 0 $gutter * 2;
 		padding: 0;
+
+		li {
+			color: $color-abbey;
+			font-size: rem(20);
+
+			a {
+				border-bottom: 1px dashed $color-oslo;
+				color: $color-abbey;
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+.title {
+	font-size: rem(42);
+	margin: rem(80) 0 rem(90) 0;
+	text-align: center;
+
+	@include media($tablet-landscape) {
+		padding: 0 rem(135);
 	}
 }
