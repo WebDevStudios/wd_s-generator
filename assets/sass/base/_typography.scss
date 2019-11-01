@@ -21,29 +21,16 @@ h1,
 
 h2,
 .h2 {
-	font-size: rem(32);
-	margin-bottom: rem(36);
+	font-size: rem(42);
+	font-weight: bold;
 	line-height: 1.2;
+	margin-bottom: rem(35);
 }
 
 h3,
 .h3 {
-
-}
-
-h4,
-.h4 {
-
-}
-
-h5,
-.h5 {
-
-}
-
-h6,
-.h6 {
-
+	font-size: rem(30);
+	font-weight: bold;
 }
 
 // Copy
