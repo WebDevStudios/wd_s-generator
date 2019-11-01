@@ -357,7 +357,7 @@ function wds_wdunderscores_do_contributors() {
 
 			$title = sprintf( '@%s with %d %s', $contributor->login, $contributor->contributions, _n( 'contribution', 'contributions', $contributor->contributions ) );
 			$url = sprintf( 'http://github.com/%s', $contributor->login );
-			$avatar_url = add_query_arg( 's', 64, $contributor->avatar_url );
+			$avatar_url = add_query_arg( 's', 130, $contributor->avatar_url );
 			$avatar_url = add_query_arg( 'd', esc_url_raw( 'https://secure.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=280' ), $avatar_url );
 			$output .= '<li class="contributor"><a title="' . esc_attr( $title ) . '" href="' . esc_url( $url ) . '"><img class="avatar" src="' . esc_url( $avatar_url ) . '" /></a></li>';
 
@@ -367,4 +367,3 @@ function wds_wdunderscores_do_contributors() {
 
 	return $output;
 }
-
