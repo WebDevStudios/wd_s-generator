@@ -9,18 +9,40 @@
 		@include clearfix;
 
 		float: left;
-		margin-bottom: $gutter;
+		margin-bottom: rem(40);
+		margin-right: 3.125%;
 
 		.avatar {
-			@include size(rem(64));
+			@include size(rem(90));
 
+			backface-visibility: hidden;
 			border-radius: 50%;
-			opacity: 0.5;
-			transition: all 0.2s ease-in-out;
+			transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 
 			&:hover {
-				opacity: 1;
+				opacity: 0.85;
+				transform: scale(1.1);
 			}
+		}
+	}
+}
+
+.contribute {
+	text-align: center;
+
+	h2 {
+		margin-bottom: rem(90);
+	}
+
+	ul {
+		align-items: flex-start;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		margin-left: 0;
+
+		@include media($tablet-landscape) {
+			display: block;
 		}
 	}
 }
