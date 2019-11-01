@@ -4,10 +4,7 @@
 
 .site-branding {
 	text-align: center;
-
-	@include media($tablet-landscape) {
-		text-align: left;
-	}
+	transform: translate(0, rem(-15));
 }
 
 .site-title {
@@ -15,9 +12,15 @@
 }
 
 .site-description {
-	font-size: rem(24);
+	font-size: rem(22);
+	font-style: italic;
+	margin-top: rem(10);
 }
 
 .site-logo {
-	@include size(rem(150) rem(87.5));
+	@include size(rem(268) rem(92));
+
+	@include media($tablet-landscape) {
+		@include size(rem(323) rem(111));
+	}
 }
