@@ -3,13 +3,13 @@
 //--------------------------------------------------------------
 
 // Buttons
-$color-button-background: $color-cod-gray;
-$color-button-background-hover: darken( $color-curious-blue, 50 );
+$color-button-background: $color-forest;
+$color-button-background-hover: lighten( $color-forest, 8 );
 $color-button-text: $color-white;
 
 // Inputs
-$color-input-border: $color-silver;
-$color-input-focus-text: $color-cod-gray;
+$color-input-border: $color-loblolly;
+$color-input-focus-text: $color-loblolly;
 $color-input-text: $color-dove-gray;
 
 $padding-input: rem(12) rem(20);
