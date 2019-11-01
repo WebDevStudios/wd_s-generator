@@ -16,21 +16,45 @@ textarea {
 
 h1,
 .h1 {
-	font-size: rem(36);
+	font-size: rem(32);
+
+	@include media($tablet-landscape) {
+		font-size: rem(36);
+	}
 }
 
 h2,
 .h2 {
-	font-size: rem(42);
+	font-size: rem(32);
 	font-weight: bold;
 	line-height: 1.2;
 	margin-bottom: rem(35);
+	margin-top: 0;
+
+	@include media($tablet-landscape) {
+		font-size: rem(42);
+	}
 }
 
 h3,
 .h3 {
-	font-size: rem(30);
+	font-size: rem(26);
 	font-weight: bold;
+
+	@include media($tablet-landscape) {
+		font-size: rem(30);
+	}
+}
+
+.title {
+	font-size: rem(32);
+	margin: 0 0 rem(90) 0;
+	text-align: center;
+
+	@include media($tablet-landscape) {
+		font-size: rem(42);
+		padding: 0 rem(166);
+	}
 }
 
 // Copy

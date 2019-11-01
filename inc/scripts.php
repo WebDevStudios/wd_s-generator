@@ -19,18 +19,13 @@ function wds_wdunderscores_font_url() {
 	 * supported by the following, translate this to 'off'. Do not translate
 	 * into your own language.
 	 */
-	$roboto = _x( 'on', 'Roboto font: on or off', 'wdunderscores' );
-	$open_sans = _x( 'on', 'Open Sans font: on or off', 'wdunderscores' );
+	$raleway = _x( 'on', 'Raleway font: on or off', 'wdunderscores' );
 
-	if ( 'off' !== $roboto || 'off' !== $open_sans ) {
+	if ( 'off' !== $raleway || 'off' !== $open_sans ) {
 		$font_families = array();
 
-		if ( 'off' !== $roboto ) {
-			$font_families[] = 'Roboto:400,700';
-		}
-
-		if ( 'off' !== $open_sans ) {
-			$font_families[] = 'Open Sans:400,300,700';
+		if ( 'off' !== $raleway ) {
+			$font_families[] = 'Raleway:400,400i,500,700';
 		}
 
 		$query_args = array(
@@ -67,7 +62,6 @@ function wds_wdunderscores_scripts() {
 
 	// Enqueue styles.
 	wp_enqueue_style( 'wdunderscores-google-font' );
-	wp_enqueue_style( 'animate.css' );
 	wp_enqueue_style( 'wdunderscores-style', get_stylesheet_directory_uri() . '/style' . $suffix . '.css', array(), $version );
 
 	// Enqueue scripts.
