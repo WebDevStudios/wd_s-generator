@@ -9,14 +9,21 @@
 
 	margin: 0 auto;
 	max-width: rem(1000);
-	padding: $gutter 2 * $gutter;
+	padding: 0;
 }
 
 .site-header,
 .site-footer {
+	align-items: center;
 	background-color: $color-shark;
 	color: $color-white;
-	height: rem(345);
+	display: flex;
+	height: rem(425);
+	justify-content: center;
+}
+
+.site-footer {
+	height: rem(250);
 }
 
 .site-content {
