@@ -8,13 +8,15 @@
 	@include outer-container;
 
 	margin: 0 auto;
+	max-width: rem(1000);
 	padding: $gutter 2 * $gutter;
 }
 
 .site-header,
 .site-footer {
-	background-color: $color-cod-gray;
+	background-color: $color-shark;
 	color: $color-white;
+	height: rem(345);
 }
 
 .site-content {
@@ -30,6 +32,8 @@
 
 		@include media($tablet-landscape) {
 			@include span-columns(8);
+
+			width: 100%;
 		}
 	}
 
