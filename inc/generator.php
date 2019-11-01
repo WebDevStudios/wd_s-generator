@@ -97,7 +97,7 @@ class WDS_Theme_Generator {
 				</section><!-- .generator-form-inputs -->
 
 				<div class="generator-form-submit">
-					<input type="submit" name="wds_wdunderscores_generate_submit" value="Generate my theme!" />
+					<input type="submit" name="wds_wdunderscores_generate_submit" value="Generate my theme" />
 				</div><!-- .generator-form-submit -->
 			</form>
 		</div><!-- .generator-form -->
