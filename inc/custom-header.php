@@ -26,8 +26,8 @@ function wds_wdunderscores_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'wds_wdunderscores_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
-		'width'                  => 300,
-		'height'                 => 175,
+		'width'                  => 323,
+		'height'                 => 111,
 		'flex-height'            => true,
 		'wp-head-callback'       => 'wds_wdunderscores_header_style',
 		'admin-head-callback'    => 'wds_wdunderscores_admin_header_style',
