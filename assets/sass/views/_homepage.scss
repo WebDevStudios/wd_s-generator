@@ -5,11 +5,34 @@
 .content-section {
 	background-color: $color-white;
 	border-radius: rem(10);
-	box-shadow: 0 rem(2) rem(35) 0 lighten($color-black, 80%);
-	margin-bottom: rem(96);
+	box-shadow: 0 rem(2) rem(35) 0 $box-shadow;
+	margin-bottom: rem(120);
 	padding: rem(50) rem(40);
 
-	ol {
+	&.generator {
+		margin-top: rem(-70);
+		padding: rem(50) rem(40) rem(28) rem(40);
+	}
+
+	p {
+		font-size: rem(18);
+
+		a {
+			border-bottom: 1px dashed $color-oslo;
+			color: $color-abbey;
+			padding-bottom: rem(2);
+			text-decoration: none;
+			transition: border-bottom 0.3s ease-out, color 0.3s ease-out;
+
+			&:hover {
+				border-bottom-color: $color-forest;
+				color: $color-forest;
+			}
+		}
+	}
+
+
+	ul {
 		margin: 0 0 0 $gutter * 2;
 		padding: 0;
 
@@ -21,17 +44,153 @@
 				border-bottom: 1px dashed $color-oslo;
 				color: $color-abbey;
 				text-decoration: none;
+				transition: border-bottom 0.3s ease-out, color 0.3s ease-out;
+
+				&:hover {
+					border-bottom-color: $color-forest;
+					color: $color-forest;
+				}
 			}
 		}
 	}
 }
 
-.title {
-	font-size: rem(42);
-	margin: rem(80) 0 rem(90) 0;
-	text-align: center;
+// Install Instructions Section.
+.install {
+	margin-bottom: rem(100);
+
+	ul {
+		margin-left: 0;
+
+		li {
+			font-size: rem(17);
+			list-style: none;
+			margin-bottom: rem(8);
+
+			@include media($tablet-landscape) {
+				font-size: rem(20);
+			}
+
+			&:before {
+				background-image: url('assets/images/svg-icons/check.svg');
+				background-size: contain;
+				content: "";
+				display: inline-block;
+				height: rem(25);
+				margin-right: rem(14);
+				vertical-align: middle;
+				width: rem(25);
+			}
+		}
+	}
+}
+
+.two-col {
+	align-items: flex-start;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 100%;
+
+	p {
+		a {
+			border-bottom: 1px dashed $color-oslo;
+			color: $color-abbey;
+			text-decoration: none;
+			transition: border-bottom 0.3s ease-out, color 0.3s ease-out;
+
+			&:hover {
+				border-bottom-color: $color-forest;
+				color: $color-forest;
+			}
+		}
+	}
+}
+
+.about,
+.twitter {
+	border-radius: rem(10);
+	margin-bottom: rem(90);
+	padding: rem(30);
+	width: 100%;
+
+	p {
+		font-size: rem(18);
+		line-height: 1.4;
+	}
+
+	h3 {
+		margin-bottom: rem(10);
+		margin-top: 0;
+	}
 
 	@include media($tablet-landscape) {
-		padding: 0 rem(135);
+		height: rem(320);
+		width: 48%;
+	}
+
+	.button {
+		color: $color-white;
+		display: inline-block;
+		font-size: rem(16);
+		margin: 0;
+		padding: rem(20) rem(19);
+		text-align: center;
+		text-decoration: none;
+		width: rem(290);
+	}
+}
+
+.about {
+	background-color: $color-zircon;
+	border: rem(1) solid $color-meteor;
+	box-shadow: none;
+
+	.button {
+		background-color: $color-shark;
+		background-repeat: no-repeat;
+		margin-top: rem(20);
+		position: relative;
+	}
+
+	.github-icon {
+		background-image: url('assets/images/svg-icons/github.svg');
+		background-size: cover;
+		display: inline-block;
+		height: rem(24);
+		margin-right: rem(14);
+		transform: translate(0, rem(3));
+		width: rem(24);
+	}
+
+	@include media($tablet-landscape) {
+		margin-right: 2%;
+	}
+}
+
+.twitter {
+	background-color: $color-sea;
+	border: rem(1) solid $color-plankton;
+	box-shadow: none;
+
+	.button {
+		background-color: $color-twitter;
+		background-repeat: no-repeat;
+		margin-top: rem(18);
+		position: relative;
+
+		@include media($tablet-landscape) {
+			margin-top: rem(45);
+		}
+	}
+
+	.twitter-icon {
+		background-image: url('assets/images/svg-icons/twitter-btn.svg');
+		background-size: cover;
+		display: inline-block;
+		height: rem(20);
+		margin-right: rem(14);
+		transform: translate(0, rem(5));
+		width: rem(24);
 	}
 }
