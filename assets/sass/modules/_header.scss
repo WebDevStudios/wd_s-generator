@@ -24,3 +24,8 @@
 		@include size(rem(323) rem(111));
 	}
 }
+
+.site-header {
+	position: relative;
+	z-index: 1;
+}
