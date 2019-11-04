@@ -12,6 +12,8 @@
 	&.generator {
 		margin-top: rem(-70);
 		padding: rem(50) rem(40) rem(28) rem(40);
+		position: relative;
+		z-index: 10;
 	}
 
 	p {
