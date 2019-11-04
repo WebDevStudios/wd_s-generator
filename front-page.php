@@ -46,7 +46,7 @@ get_header(); ?>
 
 				<section class="content-section contribute">
 					<h2><?php echo esc_html_e( 'Brought to you by these fine folks' ); ?></h2>
-					<?php echo wds_wdunderscores_do_contributors(); ?>
+					<?php echo wds_wdunderscores_do_contributors(); // WPCS XSS OK. ?>
 				</section><!-- .contribute -->
 
 			</div><!-- .wrap -->
