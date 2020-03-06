@@ -88,7 +88,7 @@ class WDS_Theme_Generator {
 							<div class="field-group">
 								<label for="wdunderscores-dev-uri">Development URL</label>
 								<input type="text" id="wdunderscores-dev-uri" name="wds_wdunderscores_dev_uri" placeholder="Theme Development URL" />
-								<p class="description">http://acmeinc.dev</p>
+								<p class="description">https://acmeinc.test</p>
 							</div>
 						</div><!-- .group-five -->
 
@@ -126,8 +126,8 @@ class WDS_Theme_Generator {
 			'author'       => 'WebDevStudios',
 			'author_uri'   => 'https://webdevstudios.com/',
 			'author_email' => 'wds@webdevstudios.com',
-			'dev_uri'      => 'http://acmeinc.dev',
-			'description'  => 'A spiffy new theme for Acme Inc. by WebDevStudios based on wd_s',
+			'dev_uri'      => 'https://acmeinc.test',
+			'description'  => 'A spiffy new theme for Acme Inc. by WebDevStudios based on wd_s.',
 			'functions'    => 'wds_acme',
 			'wpcom'        => false,
 		);
@@ -250,7 +250,7 @@ class WDS_Theme_Generator {
 			$contents = str_replace( 'mail@_s.com',  $this->theme['author_email'], $contents );
 			$contents = str_replace( 'John Doe', $this->theme['author'], $contents );
 			$contents = str_replace( 'http://_s.com', esc_url( $this->theme['author_uri'] ), $contents );
-			$contents = str_replace( 'testing.dev', esc_url( $this->theme['dev_uri'] ), $contents );
+			$contents = str_replace( '_s.test', esc_url( $this->theme['dev_uri'] ), $contents );
 		}
 
 		// DocBlocks Package
