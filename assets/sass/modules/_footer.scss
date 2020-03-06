@@ -3,14 +3,19 @@
 //--------------------------------------------------------------
 
 .site-footer {
-	border-top: 2px solid $color-cod-gray;
-	text-align: center;
+  border-top: 2px solid $color-cod-gray;
+  text-align: center;
 
-	.copyright-text {
-		font-size: rem(19);
-	}
+  .copyright-text {
+    font-size: rem(19);
 
-	@include media($tablet-landscape) {
-		text-align: left;
-	}
+    a {
+      color: $color-white;
+      text-decoration: underline;
+    }
+  }
+
+  @include media($tablet-landscape) {
+    text-align: left;
+  }
 }
