@@ -79,7 +79,7 @@ class WDS_Theme_Generator {
 							<div class="field-group">
 								<label for="wdunderscores-author-email">Author Email</label>
 								<input type="text" id="wdunderscores-author-email" name="wds_wdunderscores_author_email" placeholder="Theme Author Email" />
-								<p class="description">wds@webdevstudios.com</p>
+								<p class="description">contact@webdevstudios.com</p>
 							</div>
 						</div><!-- .group-four -->
 
@@ -125,7 +125,7 @@ class WDS_Theme_Generator {
 			'uri'          => 'https://acmeinc.com',
 			'author'       => 'WebDevStudios',
 			'author_uri'   => 'https://webdevstudios.com/',
-			'author_email' => 'wds@webdevstudios.com',
+			'author_email' => 'contact@webdevstudios.com',
 			'dev_uri'      => 'https://acmeinc.test',
 			'description'  => 'A spiffy new theme for Acme Inc. by WebDevStudios based on wd_s.',
 			'functions'    => 'wds_acme',
