@@ -222,8 +222,8 @@ class WDS_Theme_Generator {
 			return $contents;
 		}
 
-		// Special treatment for style.scss
-		if ( in_array( $filename, array( 'assets/sass/style.scss' ), true ) ) {
+		// Special treatment for style.css.
+		if ( in_array( $filename, array( 'style.css' ), true ) ) {
 			$theme_headers = array(
 				'Theme Name'  => $this->theme['name'],
 				'Theme URI'   => esc_url_raw( $this->theme['uri'] ),
