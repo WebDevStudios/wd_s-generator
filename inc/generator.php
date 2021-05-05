@@ -211,6 +211,90 @@ class WDS_Theme_Generator {
 	}
 
 	/**
+	 * Replace contents in the format of $headers[ $key ]: $headers[$value]
+	 * 
+	 * For example, when called with the arguments
+	 * $headers = array(
+	 *     'Theme Name' => 'Acme Theme',
+	 *     'Theme URI'  => 'https://acme-theme.com',
+	 * );
+	 * $contents = '
+	 * /*
+	 * Theme Name: wd_s
+	 * Theme URI: https://webdevstudios.com/
+	 * ';
+	 *
+	 * $new_content = replace_headers( $headers, $contents );
+	 * 
+	 * Output of $new_content would be
+	 * '
+	 * /*
+	 * Theme Name: Acme Theme
+	 * Theme URI: https://acme-theme.com
+	 * '
+	 * 
+	 *
+	 * @param array  $headers
+	 * @param string $contents Current content.
+	 *
+	 * @return string 
+	 */
+	private function replace_headers( $headers, $contents ) {
+		if ( ! is_array( $headers ) ) {
+			return $contents;
+		}
+
+		// Loop through each file and rename.
+		foreach ( $headers as $key => $value ) {
+			$contents = preg_replace( '/(' . preg_quote( $key ) . ':)\s?(.+)/', '\\1 ' . $value, $contents );
+		}
+
+		return $contents;
+	}
+
+	/**
+	 * Replace contents method for package.json and package-lock.json
+	 *
+	 * @param string $contents Current content.
+	 *
+	 * @return string
+	 */
+	private function do_replace_package_json( $contents ) {
+		// We directly replace "wd_s" instead of using "name" because
+		// `package-lock.json` has multiple instances of "name".
+		$contents = str_replace( '"wd_s"', '"' . $this->theme['slug'] . '"', $contents );
+		
+		$headers = array(
+			'"description"' => '"' . $this->theme['description'] . '",',
+			'"author"'      => '"' . $this->theme['author'] . ' <' . esc_url_raw( $this->theme['uri'] ) . '>",',
+			'"homepage"'    => '"' . esc_url_raw( $this->theme['dev_uri'] ) . '",',
+		);
+
+		return $this->replace_headers( $headers, $contents );
+	}
+
+	/**
+	 * Replace contents method for composer.json
+	 *
+	 * @param string $contents Current content.
+	 *
+	 * @return string
+	 */
+	private function do_replace_composer_json( $contents ) {
+		$package_name = strtolower( sanitize_title_with_dashes( $this->theme['author'] ) ) . '/' . $this->theme['slug'];
+		$contents     = str_replace( 'webdevstudios/wd_s', $package_name, $contents );
+		$contents     = str_replace( 'WebDevStudios', $this->theme['author'], $contents );
+		$contents     = str_replace( '_s.pot', $this->theme['slug'] . '.pot', $contents );
+
+		$headers = array(
+			'"description"' => '"' . $this->theme['description'] . '",',
+			'"email"'       => '"' . $this->theme['author_email'] . '"',
+		);
+
+		return $this->replace_headers( $headers, $contents );
+	}
+
+	/**
 	 * Runs when looping through files contents, does the replacements fun stuff.
 	 */
 	public function do_replacements( $contents, $filename ) {
@@ -219,11 +303,22 @@ class WDS_Theme_Generator {
 		$valid_extensions = array( 'php', 'css', 'scss', 'js', 'txt' );
 		$valid_extensions_regex = implode( '|', $valid_extensions );
 		if ( ! preg_match( "/\.({$valid_extensions_regex})$/", $filename ) ) {
+
+			// Special treatment for `package.json` and `package-lock.json`.
+			if ( in_array( $filename, array( 'package.json', 'package-lock.json' ), true ) ) {
+				return $this->do_replace_package_json( $contents );
+			}
+
+			// Special treatment for `composer.json`.
+			if ( 'composer.json' == $filename ) {
+				return $this->do_replace_composer_json( $contents );
+			}
+
 			return $contents;
 		}
 
 		// Special treatment for style.css.
-		if ( in_array( $filename, array( 'style.css' ), true ) ) {
+		if ( 'style.css' == $filename ) {
 			$theme_headers = array(
 				'Theme Name'  => $this->theme['name'],
 				'Theme URI'   => esc_url_raw( $this->theme['uri'] ),
@@ -233,10 +328,7 @@ class WDS_Theme_Generator {
 				'Text Domain' => $this->theme['slug'],
 			);
 
-			// Loop through each file and rename.
-			foreach ( $theme_headers as $key => $value ) {
-				$contents = preg_replace( '/(' . preg_quote( $key ) . ':)\s?(.+)/', '\\1 ' . $value, $contents );
-			}
+			$contents = $this->replace_headers( $theme_headers, $contents );
 
 			// If all else fails, update with just theme name.
 			$contents = preg_replace( '/\b_s\b/', $this->theme['slug'], $contents );
