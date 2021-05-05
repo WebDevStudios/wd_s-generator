@@ -110,64 +110,55 @@ class WDS_Theme_Generator {
 	 */
 	public function init() {
 
-		if ( ! isset( $_REQUEST['wds_wdunderscores_generate'], $_REQUEST['wds_wdunderscores_name'] ) ) {
+		if ( ! isset( $_REQUEST['wds_wdunderscores_generate'] ) ) {
 			return;
 		}
 
-		if ( empty( $_REQUEST['wds_wdunderscores_name'] ) ) {
-			wp_die( 'Please enter a theme name. Please go back and try again.' );
-		}
-
-		// Set defaults
-		$this->theme = array(
-			'name'         => 'Acme Inc.',
-			'slug'         => 'acme-inc',
-			'uri'          => 'https://acmeinc.com',
-			'author'       => 'WebDevStudios',
-			'author_uri'   => 'https://webdevstudios.com/',
-			'author_email' => 'contact@webdevstudios.com',
-			'dev_uri'      => 'https://acmeinc.test',
-			'description'  => 'A spiffy new theme for Acme Inc. by WebDevStudios based on wd_s.',
-			'functions'    => 'wds_acme',
-			'wpcom'        => false,
+		// Defaults.
+		$defaults = array(
+			'wds_wdunderscores_name'         => 'Acme Inc.',
+			'wds_wdunderscores_slug'         => 'acme-inc',
+			'wds_wdunderscores_theme_uri'    => 'https://acmeinc.com',
+			'wds_wdunderscores_author'       => 'WebDevStudios',
+			'wds_wdunderscores_author_uri'   => 'https://webdevstudios.com/',
+			'wds_wdunderscores_author_email' => 'contact@webdevstudios.com',
+			'wds_wdunderscores_dev_uri'      => 'https://acmeinc.test',
+			'wds_wdunderscores_description'  => 'A spiffy new theme for Acme Inc. by WebDevStudios based on wd_s.',
+			'wds_wdunderscores_functions'    => 'wds_acme',
+			'wpcom'                          => false,
 		);
 
-		$this->theme['name'] = trim( $_REQUEST['wds_wdunderscores_name'] );
+		// Hold non-empty submitted field.
+		$args = array();
+		foreach ( $defaults as $key => $value ) {
+			if ( ! isset( $_REQUEST[ $key ] ) || empty( trim( $_REQUEST[ $key ] ) ) ) {
+				continue;
+			}
+
+			$args[ $key ] = sanitize_text_field( $_REQUEST[ $key ] );
+		}
+
+		$parsed_args = wp_parse_args( $args, $defaults );
+
+		// Setup generated theme info.
+		$this->theme         = array();
+		$this->theme['name'] = $parsed_args['wds_wdunderscores_name'];
+
+		// By default, slug should be based from 'name' unless it's specifically specified.
 		$this->theme['slug'] = sanitize_title_with_dashes( $this->theme['name'] );
-		$this->theme['functions'] = trim( $_REQUEST['wds_wdunderscores_functions'] );
-		$this->theme['wpcom'] = (bool) isset( $_REQUEST['can_i_haz_wpcom'] );
-
-		if ( ! empty( $_REQUEST['wds_wdunderscores_description'] ) ) {
-			$this->theme['description'] = trim( $_REQUEST['wds_wdunderscores_description'] );
+		if ( $parsed_args['wds_wdunderscores_slug'] !== $defaults['wds_wdunderscores_slug'] ) {
+			$this->theme['slug'] = sanitize_title_with_dashes( $parsed_args['wds_wdunderscores_slug'] );
 		}
 
-		if ( ! empty( $_REQUEST['wds_wdunderscores_theme_uri'] ) ) {
-			$this->theme['uri'] = trim( $_REQUEST['wds_wdunderscores_theme_uri'] );
-		}
-
-		if ( ! empty( $_REQUEST['wds_wdunderscores_functions'] ) ) {
-			$this->theme['functions'] = preg_replace( '/\s+/', '_', $_REQUEST['wds_wdunderscores_functions'] );
-		}
-
-		if ( ! empty( $_REQUEST['wds_wdunderscores_slug'] ) ) {
-			$this->theme['slug'] = sanitize_title_with_dashes( $_REQUEST['wds_wdunderscores_slug'] );
-		}
-
-		if ( ! empty( $_REQUEST['wds_wdunderscores_author'] ) ) {
-			$this->theme['author'] = trim( $_REQUEST['wds_wdunderscores_author'] );
-		}
-
-		if ( ! empty( $_REQUEST['wds_wdunderscores_author_uri'] ) ) {
-			$this->theme['author_uri'] = trim( $_REQUEST['wds_wdunderscores_author_uri'] );
-		}
-
-		if ( ! empty( $_REQUEST['wds_wdunderscores_author_email'] ) ) {
-			$this->theme['author_email'] = trim( $_REQUEST['wds_wdunderscores_author_email'] );
-		}
-
-		if ( ! empty( $_REQUEST['wds_wdunderscores_dev_uri'] ) ) {
-			$this->theme['dev_uri'] = esc_url( $_REQUEST['wds_wdunderscores_dev_uri'] );
-		}
+		$this->theme['functions']    = $parsed_args['wds_wdunderscores_functions'];
+		$this->theme['wpcom']        = (bool) isset( $parsed_args['can_i_haz_wpcom'] );
+		$this->theme['description']  = $parsed_args['wds_wdunderscores_description'];
+		$this->theme['uri']          = $parsed_args['wds_wdunderscores_theme_uri'];
+		$this->theme['functions']    = preg_replace( '/\s+/', '_', $parsed_args['wds_wdunderscores_functions'] );
+		$this->theme['author']       = $parsed_args['wds_wdunderscores_author'];
+		$this->theme['author_uri']   = $parsed_args['wds_wdunderscores_author_uri'];
+		$this->theme['author_email'] = $parsed_args['wds_wdunderscores_author_email'];
+		$this->theme['dev_uri']      = esc_url( $parsed_args['wds_wdunderscores_dev_uri'] );
 
 		$zip = new ZipArchive;
 		$zip_filename = sprintf( '/tmp/wdunderscores-%s.zip', md5( print_r( $this->theme, true ) ) );
