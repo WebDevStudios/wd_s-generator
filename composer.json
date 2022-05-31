@@ -1,0 +1,26 @@
+{
+    "name": "webdevstudios/wd_s-generator",
+    "version": "1.0.0",
+    "type": "wordpress-theme",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "WebDevStudios",
+            "email": "contact@webdevstudios.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "homepage": "https://wdunderscores.com/",
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+        "phpcompatibility/phpcompatibility-wp": "^2.1.2",
+        "wp-coding-standards/wpcs": "^2.3.0"
+    },
+    "extra": {
+        "installer-name": "wd_s-generator"
+    },
+    "scripts": {
+        "lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --standard=phpcs.xml --extensions=php .",
+        "lint:fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --standard=phpcs.xml --extensions=php ."
+    }
+}
