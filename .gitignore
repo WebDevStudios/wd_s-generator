@@ -22,3 +22,4 @@ assets/js/project.js
 assets/js/project.min.js
 languages/wdunderscores.pot
 /vendor/
+inc/prototype/
