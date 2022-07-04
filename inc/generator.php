@@ -49,9 +49,9 @@ class WDS_Theme_Generator {
 								<p class="description">A spiffy new theme for Acme Inc. by WebDevStudios based on wd_s.</p>
 							</div>
 							<div class="field-group">
-								<label for="wdunderscores-functions">Functions Prefix</label>
-								<input type="text" id="wdunderscores-functions" name="wds_wdunderscores_functions" placeholder="Theme Functions Prefix (wds_client)" />
-								<p class="description">Functions prefix. Use underscores: wds_acme</p>
+								<label for="wdunderscores-namespace">Namespace</label>
+								<input type="text" id="wdunderscores-namespace" name="wds_wdunderscores_namespace" placeholder="Theme Namespace (Client\wd_s)" />
+								<p class="description">Namespace. Use underscores: ACME\wd_s</p>
 							</div>
 						</div><!-- .group-two -->
 
@@ -124,7 +124,7 @@ class WDS_Theme_Generator {
 			'wds_wdunderscores_author_email' => 'contact@webdevstudios.com',
 			'wds_wdunderscores_dev_uri'      => 'https://acmeinc.test',
 			'wds_wdunderscores_description'  => 'A spiffy new theme for Acme Inc. by WebDevStudios based on wd_s.',
-			'wds_wdunderscores_functions'    => 'wds_acme',
+			'wds_wdunderscores_namespace'    => 'ACME\wd_s',
 			'wpcom'                          => false,
 		);
 
@@ -146,25 +146,42 @@ class WDS_Theme_Generator {
 
 		// By default, slug should be based from 'name' unless it's specifically specified.
 		$this->theme['slug'] = sanitize_title_with_dashes( $this->theme['name'] );
-		if ( $parsed_args['wds_wdunderscores_slug'] !== $defaults['wds_wdunderscores_slug'] ) {
-			$this->theme['slug'] = sanitize_title_with_dashes( $parsed_args['wds_wdunderscores_slug'] );
+		if (
+			$parsed_args['wds_wdunderscores_slug'] !== $defaults['wds_wdunderscores_slug']
+		) {
+			$this->theme['slug'] = sanitize_title_with_dashes(
+				$parsed_args['wds_wdunderscores_slug']
+			);
 		}
 
-		$this->theme['functions']    = $parsed_args['wds_wdunderscores_functions'];
+		$this->theme['namespace']    = $parsed_args['wds_wdunderscores_namespace'];
 		$this->theme['wpcom']        = (bool) isset( $parsed_args['can_i_haz_wpcom'] );
 		$this->theme['description']  = $parsed_args['wds_wdunderscores_description'];
 		$this->theme['uri']          = $parsed_args['wds_wdunderscores_theme_uri'];
-		$this->theme['functions']    = preg_replace( '/\s+/', '_', $parsed_args['wds_wdunderscores_functions'] );
+		$this->theme['namespace']    = preg_replace( '/\s+/', '_', $parsed_args['wds_wdunderscores_namespace'] );
 		$this->theme['author']       = $parsed_args['wds_wdunderscores_author'];
 		$this->theme['author_uri']   = $parsed_args['wds_wdunderscores_author_uri'];
 		$this->theme['author_email'] = $parsed_args['wds_wdunderscores_author_email'];
 		$this->theme['dev_uri']      = esc_url( $parsed_args['wds_wdunderscores_dev_uri'] );
 
-		$zip = new ZipArchive;
-		$zip_filename = sprintf( '/tmp/wdunderscores-%s.zip', md5( print_r( $this->theme, true ) ) );
-		$res = $zip->open( $zip_filename, ZipArchive::CREATE && ZipArchive::OVERWRITE );
+		$zip          = new ZipArchive();
+		$zip_filename = sprintf(
+			'/tmp/wdunderscores-%s.zip',
+			md5( print_r( $this->theme, true ) )
+		);
+		// $res = $zip->open( $zip_filename, ZipArchive::CREATE && ZipArchive::OVERWRITE );
 		$prototype_dir = dirname( __FILE__ ) . '/prototype/';
-		$exclude_files = array( '.travis.yml', 'codesniffer.ruleset.xml', 'CONTRIBUTING.md', '.git', '.svn', '.DS_Store', '.gitignore', '.', '..' );
+		$exclude_files = array(
+			'.travis.yml',
+			'codesniffer.ruleset.xml',
+			'CONTRIBUTING.md',
+			'.git',
+			'.svn',
+			'.DS_Store',
+			'.gitignore',
+			'.',
+			'..'
+		);
 		$exclude_directories = array( '.git', '.svn', '.', '..' );
 
 		$iterator = new RecursiveDirectoryIterator( $prototype_dir );
@@ -181,29 +198,45 @@ class WDS_Theme_Generator {
 				}
 			}
 
-			$local_filename = str_replace( trailingslashit( $prototype_dir ), '', $filename );
+			$local_filename = str_replace(
+				trailingslashit( $prototype_dir ), '', $filename
+			);
 
 			if ( 'languages/_s.pot' == $local_filename ) {
-				$local_filename = sprintf( 'languages/%s.pot', $this->theme['slug'] );
+				$local_filename = sprintf(
+					'languages/%s.pot', $this->theme['slug']
+				);
 			}
 
 			$contents = file_get_contents( $filename );
-			$contents = apply_filters( 'wds_wdunderscores_generator_file_contents', $contents, $local_filename );
-			$zip->addFromString( trailingslashit( $this->theme['slug'] ) . $local_filename, $contents );
+			$contents = apply_filters(
+				'wds_wdunderscores_generator_file_contents',
+				$contents,
+				$local_filename
+			);
+			$zip->addFromString(
+				trailingslashit( $this->theme['slug'] ) . $local_filename,
+				$contents
+			);
 		}
 
 		$zip->close();
 
 		header( 'Content-type: application/zip' );
-		header( sprintf( 'Content-Disposition: attachment; filename="%s.zip"', $this->theme['slug'] ) );
+		header(
+			sprintf(
+				'Content-Disposition: attachment; filename="%s.zip"',
+				$this->theme['slug']
+			)
+		);
 		readfile( $zip_filename );
-		unlink( $zip_filename );/**/
+		unlink( $zip_filename );
 		die();
 	}
 
 	/**
 	 * Replace contents in the format of $headers[ $key ]: $headers[$value]
-	 * 
+	 *
 	 * For example, when called with the arguments
 	 * $headers = array(
 	 *     'Theme Name' => 'Acme Theme',
@@ -216,19 +249,19 @@ class WDS_Theme_Generator {
 	 * ';
 	 *
 	 * $new_content = replace_headers( $headers, $contents );
-	 * 
+	 *
 	 * Output of $new_content would be
 	 * '
 	 * /*
 	 * Theme Name: Acme Theme
 	 * Theme URI: https://acme-theme.com
 	 * '
-	 * 
+	 *
 	 *
 	 * @param array  $headers
 	 * @param string $contents Current content.
 	 *
-	 * @return string 
+	 * @return string
 	 */
 	private function replace_headers( $headers, $contents ) {
 		if ( ! is_array( $headers ) ) {
@@ -237,7 +270,11 @@ class WDS_Theme_Generator {
 
 		// Loop through each file and rename.
 		foreach ( $headers as $key => $value ) {
-			$contents = preg_replace( '/(' . preg_quote( $key ) . ':)\s?(.+)/', '\\1 ' . $value, $contents );
+			$contents = preg_replace(
+				'/(' . preg_quote( $key ) . ':)\s?(.+)/',
+				'\\1 ' . $value,
+				$contents
+			);
 		}
 
 		return $contents;
@@ -254,7 +291,7 @@ class WDS_Theme_Generator {
 		// We directly replace "wd_s" instead of using "name" because
 		// `package-lock.json` has multiple instances of "name".
 		$contents = str_replace( '"wd_s"', '"' . $this->theme['slug'] . '"', $contents );
-		
+
 		$headers = array(
 			'"description"' => '"' . $this->theme['description'] . '",',
 			'"author"'      => '"' . $this->theme['author'] . ' <' . esc_url_raw( $this->theme['uri'] ) . '>",',
@@ -272,10 +309,12 @@ class WDS_Theme_Generator {
 	 * @return string
 	 */
 	private function do_replace_composer_json( $contents ) {
-		$package_name = strtolower( sanitize_title_with_dashes( $this->theme['author'] ) ) . '/' . $this->theme['slug'];
-		$contents     = str_replace( 'webdevstudios/wd_s', $package_name, $contents );
-		$contents     = str_replace( 'WebDevStudios', $this->theme['author'], $contents );
-		$contents     = str_replace( '_s.pot', $this->theme['slug'] . '.pot', $contents );
+		$package_name = strtolower(
+			sanitize_title_with_dashes( $this->theme['author'] )
+		) . '/' . $this->theme['slug'];
+		$contents = str_replace( 'webdevstudios/wd_s', $package_name, $contents );
+		$contents = str_replace( 'WebDevStudios', $this->theme['author'], $contents );
+		$contents = str_replace( '_s.pot', $this->theme['slug'] . '.pot', $contents );
 
 		$headers = array(
 			'"description"' => '"' . $this->theme['description'] . '",',
@@ -296,7 +335,13 @@ class WDS_Theme_Generator {
 		if ( ! preg_match( "/\.({$valid_extensions_regex})$/", $filename ) ) {
 
 			// Special treatment for `package.json` and `package-lock.json`.
-			if ( in_array( $filename, array( 'package.json', 'package-lock.json' ), true ) ) {
+			if (
+				in_array(
+					$filename,
+					array( 'package.json', 'package-lock.json' ),
+					true
+				)
+			) {
 				return $this->do_replace_package_json( $contents );
 			}
 
@@ -309,7 +354,7 @@ class WDS_Theme_Generator {
 		}
 
 		// Special treatment for style.css.
-		if ( 'style.css' == $filename ) {
+		if ( 'style.css' === $filename ) {
 			$theme_headers = array(
 				'Theme Name'  => $this->theme['name'],
 				'Theme URI'   => esc_url_raw( $this->theme['uri'] ),
@@ -328,7 +373,7 @@ class WDS_Theme_Generator {
 		}
 
 		// Special treatment for Gulpfile.js
-		if ( 'Gulpfile.js' == $filename ) {
+		if ( 'Gulpfile.js' === $filename ) {
 			$contents = str_replace( '_s.pot', $this->theme['slug'] . '.pot', $contents );
 			$contents = str_replace( 'mail@_s.com',  $this->theme['author_email'], $contents );
 			$contents = str_replace( 'John Doe', $this->theme['author'], $contents );
@@ -337,16 +382,32 @@ class WDS_Theme_Generator {
 		}
 
 		// DocBlocks Package
-		$contents = str_replace( "@package _s", sprintf( "@package %s", $this->theme['name'] ), $contents );
+		$contents = str_replace(
+			"@package _s",
+			sprintf( "@package %s", $this->theme['name'] ),
+			$contents
+		);
 
 		// Scipt/Styles Prefixed Handles
-		$contents = str_replace( "_s-", sprintf( "%s-",  $this->theme['slug'] ), $contents );
+		$contents = str_replace(
+			"_s-",
+			sprintf( "%s-",  $this->theme['slug'] ),
+			$contents
+		);
 
 		// Text Domains
-		$contents = str_replace( "'_s'", sprintf( "'%s'",  $this->theme['slug'] ), $contents );
+		$contents = str_replace(
+			"'_s'",
+			sprintf( "'%s'",  $this->theme['slug'] ),
+			$contents
+		);
 
 		// Function names
-		$contents = str_replace( "_s_", str_replace( '-', '_', $this->theme['functions'] ) . '_', $contents );
+		$contents = str_replace(
+			"_s_",
+			str_replace( '-', '_', $this->theme['namespace'] ) . '_',
+			$contents
+		);
 
 		// I have no idea
 		$contents = preg_replace( '/\b_s\b/', $this->theme['name'], $contents );
