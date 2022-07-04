@@ -11,16 +11,34 @@
     ],
     "minimum-stability": "dev",
     "homepage": "https://wdunderscores.com/",
+    "repositories": {
+        "wpackagist": {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        },
+        "wd_s": {
+            "type": "git",
+            "url": "https://github.com/WebDevStudios/wd_s"
+        }
+    },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
         "phpcompatibility/phpcompatibility-wp": "^2.1.2",
         "wp-coding-standards/wpcs": "^2.3.0"
     },
     "extra": {
-        "installer-name": "wd_s-generator"
+        "installer-name": "wd_s-generator",
+        "installer-paths": {
+            "inc/prototype/": [
+                "type:wordpress-theme"
+            ]
+        }
     },
     "scripts": {
         "lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --standard=phpcs.xml --extensions=php .",
         "lint:fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --standard=phpcs.xml --extensions=php ."
+    },
+    "require": {
+        "webdevstudios/wd_s": "2.1"
     }
 }
