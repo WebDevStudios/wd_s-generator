@@ -170,8 +170,8 @@ class WDS_Theme_Generator {
 			md5( print_r( $this->theme, true ) )
 		);
 		// $res = $zip->open( $zip_filename, ZipArchive::CREATE && ZipArchive::OVERWRITE );
-		$prototype_dir = dirname( __FILE__ ) . '/prototype/';
-		$exclude_files = array(
+		$prototype_dir       = dirname( __FILE__ ) . '/prototype/';
+		$exclude_files       = array(
 			'.travis.yml',
 			'codesniffer.ruleset.xml',
 			'CONTRIBUTING.md',
@@ -180,7 +180,7 @@ class WDS_Theme_Generator {
 			'.DS_Store',
 			'.gitignore',
 			'.',
-			'..'
+			'..',
 		);
 		$exclude_directories = array( '.git', '.svn', '.', '..' );
 
@@ -199,12 +199,15 @@ class WDS_Theme_Generator {
 			}
 
 			$local_filename = str_replace(
-				trailingslashit( $prototype_dir ), '', $filename
+				trailingslashit( $prototype_dir ),
+				'',
+				$filename
 			);
 
 			if ( 'languages/_s.pot' == $local_filename ) {
 				$local_filename = sprintf(
-					'languages/%s.pot', $this->theme['slug']
+					'languages/%s.pot',
+					$this->theme['slug']
 				);
 			}
 
@@ -256,7 +259,6 @@ class WDS_Theme_Generator {
 	 * Theme Name: Acme Theme
 	 * Theme URI: https://acme-theme.com
 	 * '
-	 *
 	 *
 	 * @param array  $headers
 	 * @param string $contents Current content.
@@ -312,9 +314,9 @@ class WDS_Theme_Generator {
 		$package_name = strtolower(
 			sanitize_title_with_dashes( $this->theme['author'] )
 		) . '/' . $this->theme['slug'];
-		$contents = str_replace( 'webdevstudios/wd_s', $package_name, $contents );
-		$contents = str_replace( 'WebDevStudios', $this->theme['author'], $contents );
-		$contents = str_replace( '_s.pot', $this->theme['slug'] . '.pot', $contents );
+		$contents     = str_replace( 'webdevstudios/wd_s', $package_name, $contents );
+		$contents     = str_replace( 'WebDevStudios', $this->theme['author'], $contents );
+		$contents     = str_replace( '_s.pot', $this->theme['slug'] . '.pot', $contents );
 
 		$headers = array(
 			'"description"' => '"' . $this->theme['description'] . '",',
@@ -330,7 +332,7 @@ class WDS_Theme_Generator {
 	public function do_replacements( $contents, $filename ) {
 
 		// Replace only text files, skip png's and other stuff.
-		$valid_extensions = array( 'php', 'css', 'scss', 'js', 'txt' );
+		$valid_extensions       = array( 'php', 'css', 'scss', 'js', 'txt' );
 		$valid_extensions_regex = implode( '|', $valid_extensions );
 		if ( ! preg_match( "/\.({$valid_extensions_regex})$/", $filename ) ) {
 
@@ -375,7 +377,7 @@ class WDS_Theme_Generator {
 		// Special treatment for Gulpfile.js
 		if ( 'Gulpfile.js' === $filename ) {
 			$contents = str_replace( '_s.pot', $this->theme['slug'] . '.pot', $contents );
-			$contents = str_replace( 'mail@_s.com',  $this->theme['author_email'], $contents );
+			$contents = str_replace( 'mail@_s.com', $this->theme['author_email'], $contents );
 			$contents = str_replace( 'John Doe', $this->theme['author'], $contents );
 			$contents = str_replace( 'http://_s.com', esc_url( $this->theme['author_uri'] ), $contents );
 			$contents = str_replace( '_s.test', esc_url( $this->theme['dev_uri'] ), $contents );
@@ -383,28 +385,28 @@ class WDS_Theme_Generator {
 
 		// DocBlocks Package
 		$contents = str_replace(
-			"@package _s",
-			sprintf( "@package %s", $this->theme['name'] ),
+			'@package _s',
+			sprintf( '@package %s', $this->theme['name'] ),
 			$contents
 		);
 
 		// Scipt/Styles Prefixed Handles
 		$contents = str_replace(
-			"_s-",
-			sprintf( "%s-",  $this->theme['slug'] ),
+			'_s-',
+			sprintf( '%s-', $this->theme['slug'] ),
 			$contents
 		);
 
 		// Text Domains
 		$contents = str_replace(
 			"'_s'",
-			sprintf( "'%s'",  $this->theme['slug'] ),
+			sprintf( "'%s'", $this->theme['slug'] ),
 			$contents
 		);
 
 		// Function names
 		$contents = str_replace(
-			"_s_",
+			'_s_',
 			str_replace( '-', '_', $this->theme['namespace'] ) . '_',
 			$contents
 		);
@@ -417,4 +419,4 @@ class WDS_Theme_Generator {
 }
 
 // Engage!
-new WDS_Theme_Generator;
+new WDS_Theme_Generator();
