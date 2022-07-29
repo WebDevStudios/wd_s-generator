@@ -169,7 +169,8 @@ class WDS_Theme_Generator {
 			'/tmp/wdunderscores-%s.zip',
 			md5( print_r( $this->theme, true ) )
 		);
-		// $res = $zip->open( $zip_filename, ZipArchive::CREATE && ZipArchive::OVERWRITE );
+		$zip->open( $zip_filename, ZipArchive::CREATE && ZipArchive::OVERWRITE );
+
 		$prototype_dir       = dirname( __FILE__ ) . '/prototype/';
 		$exclude_files       = array(
 			'.travis.yml',
@@ -374,40 +375,47 @@ class WDS_Theme_Generator {
 			return $contents;
 		}
 
-		// Special treatment for Gulpfile.js
-		if ( 'Gulpfile.js' === $filename ) {
-			$contents = str_replace( '_s.pot', $this->theme['slug'] . '.pot', $contents );
-			$contents = str_replace( 'mail@_s.com', $this->theme['author_email'], $contents );
-			$contents = str_replace( 'John Doe', $this->theme['author'], $contents );
-			$contents = str_replace( 'http://_s.com', esc_url( $this->theme['author_uri'] ), $contents );
-			$contents = str_replace( '_s.test', esc_url( $this->theme['dev_uri'] ), $contents );
+		// Replace the dev URL.
+		if ( 'package.json' === $filename ) {
+			$contents = str_replace(
+				'https://wdunderscores.test',
+				esc_url( $this->theme['dev_uri'] ),
+				$contents
+			);
 		}
 
 		// DocBlocks Package
 		$contents = str_replace(
-			'@package _s',
-			sprintf( '@package %s', $this->theme['name'] ),
+			'@package wd_s',
+			sprintf( '@package %s', $this->theme['slug'] ),
 			$contents
 		);
 
 		// Scipt/Styles Prefixed Handles
 		$contents = str_replace(
-			'_s-',
+			'wd_s-',
 			sprintf( '%s-', $this->theme['slug'] ),
 			$contents
 		);
 
 		// Text Domains
 		$contents = str_replace(
-			"'_s'",
+			"'wd_s'",
 			sprintf( "'%s'", $this->theme['slug'] ),
 			$contents
 		);
 
-		// Function names
+		// Function names and hooks.
 		$contents = str_replace(
-			'_s_',
-			str_replace( '-', '_', $this->theme['namespace'] ) . '_',
+			'wd_s_',
+			str_replace( '-', '_', $this->theme['slug'] ) . '_',
+			$contents
+		);
+
+		// Namespace
+		$contents = str_replace(
+			'WebDevStudios\wd_s',
+			str_replace( '-', '_', $this->theme['namespace'] ),
 			$contents
 		);
 
