@@ -159,6 +159,7 @@ class WDS_Theme_Generator {
 		$this->theme['description']  = $parsed_args['wds_wdunderscores_description'];
 		$this->theme['uri']          = $parsed_args['wds_wdunderscores_theme_uri'];
 		$this->theme['namespace']    = preg_replace( '/\s+/', '_', $parsed_args['wds_wdunderscores_namespace'] );
+		$this->theme['namespace']    = str_replace( '\\\\', '\\', $this->theme['namespace'] );
 		$this->theme['author']       = $parsed_args['wds_wdunderscores_author'];
 		$this->theme['author_uri']   = $parsed_args['wds_wdunderscores_author_uri'];
 		$this->theme['author_email'] = $parsed_args['wds_wdunderscores_author_email'];
