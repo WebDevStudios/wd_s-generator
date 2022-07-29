@@ -21,3 +21,5 @@ assets/images/svg-icons.svg
 assets/js/project.js
 assets/js/project.min.js
 languages/wdunderscores.pot
+/vendor/
+inc/prototype/
