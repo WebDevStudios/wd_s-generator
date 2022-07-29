@@ -4,44 +4,40 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12a6d409cc7da609ebeda11a9777902c",
+    "content-hash": "15ba5e9e77c98588238e1d99c90422e3",
     "packages": [
         {
             "name": "composer/installers",
-            "version": "1.x-dev",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "894a0b5c5d34c88b69b097f2aae1439730fa6836"
+                "reference": "5a546a8cc4607f38cfbd8e20b3de234e45b2110f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/894a0b5c5d34c88b69b097f2aae1439730fa6836",
-                "reference": "894a0b5c5d34c88b69b097f2aae1439730fa6836",
+                "url": "https://api.github.com/repos/composer/installers/zipball/5a546a8cc4607f38cfbd8e20b3de234e45b2110f",
+                "reference": "5a546a8cc4607f38cfbd8e20b3de234e45b2110f",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0 || ^2.0"
-            },
-            "replace": {
-                "roundcube/plugin-installer": "*",
-                "shama/baton": "*"
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": "^7.2 || ^8.0"
             },
             "require-dev": {
                 "composer/composer": "1.6.* || ^2.0",
                 "composer/semver": "^1 || ^3",
                 "phpstan/phpstan": "^0.12.55",
                 "phpstan/phpstan-phpunit": "^0.12.16",
-                "symfony/phpunit-bridge": "^4.2 || ^5",
-                "symfony/process": "^2.3"
+                "symfony/phpunit-bridge": "^5.3",
+                "symfony/process": "^5"
             },
             "type": "composer-plugin",
             "extra": {
                 "class": "Composer\\Installers\\Plugin",
                 "branch-alias": {
-                    "dev-main": "1.x-dev"
-                },
-                "plugin-modifies-install-path": true
+                    "dev-main": "2.x-dev"
+                }
             },
             "autoload": {
                 "psr-4": {
@@ -62,7 +58,6 @@
             "description": "A multi-framework Composer library installer",
             "homepage": "https://composer.github.io/installers/",
             "keywords": [
-                "Craft",
                 "Dolibarr",
                 "Eliasis",
                 "Hurad",
@@ -83,7 +78,6 @@
                 "Whmcs",
                 "WolfCMS",
                 "agl",
-                "aimeos",
                 "annotatecms",
                 "attogram",
                 "bitrix",
@@ -102,7 +96,6 @@
                 "grav",
                 "installer",
                 "itop",
-                "joomla",
                 "known",
                 "kohana",
                 "laravel",
@@ -130,9 +123,7 @@
                 "silverstripe",
                 "sydes",
                 "sylius",
-                "symfony",
                 "tastyigniter",
-                "typo3",
                 "wordpress",
                 "yawik",
                 "zend",
@@ -152,35 +143,35 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-03-15T21:23:54+00:00"
+            "time": "2021-08-04T13:56:36+00:00"
         },
         {
             "name": "webdevstudios/wd_s",
-            "version": "2.1",
+            "version": "3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WebDevStudios/wd_s",
-                "reference": "90d2bb6848df243cef56467f1f283f245316b140"
+                "reference": "fea624c56878f35786251cb597c969e9a2788f43"
             },
             "require": {
-                "composer/installers": "^1.10"
+                "composer/installers": "^2.0.0"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
                 "phpcompatibility/phpcompatibility-wp": "^2.1.1",
-                "wp-cli/wp-cli-bundle": "*",
-                "wp-coding-standards/wpcs": "~2.3.0"
+                "wp-cli/wp-cli-bundle": "^2.5.0",
+                "wp-coding-standards/wpcs": "^2.3.0"
             },
             "type": "wordpress-theme",
             "scripts": {
                 "format": [
-                    "./vendor/bin/phpcbf --standard=.phpcs.xml --report=summary,source"
+                    "phpcbf --report=summary,source"
                 ],
                 "lint": [
-                    "./vendor/bin/phpcs --standard=.phpcs.xml --report=summary,source"
+                    "phpcs --report=summary,source"
                 ],
                 "pot": [
-                    "./vendor/wp-cli/wp-cli/bin/wp i18n make-pot . build/languages/_s.pot --exclude=node_modules,vendor,build"
+                    "wp i18n make-pot . build/languages/wd_s.pot --exclude=node_modules,vendor,build --allow-root"
                 ]
             },
             "license": [
@@ -193,7 +184,7 @@
                 }
             ],
             "description": "A starter theme from WebDevStudios.",
-            "time": "2021-04-20T11:56:38+00:00"
+            "time": "2022-07-29T18:22:36+00:00"
         }
     ],
     "packages-dev": [
@@ -430,16 +421,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "dev-master",
+            "version": "3.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "f88fcbc9b25cfa37735e016d7d92835ef30c1676"
+                "reference": "1359e176e9307e906dc3d890bcc9603ff6d90619"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/f88fcbc9b25cfa37735e016d7d92835ef30c1676",
-                "reference": "f88fcbc9b25cfa37735e016d7d92835ef30c1676",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/1359e176e9307e906dc3d890bcc9603ff6d90619",
+                "reference": "1359e176e9307e906dc3d890bcc9603ff6d90619",
                 "shasum": ""
             },
             "require": {
@@ -477,7 +468,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2022-05-23T01:24:33+00:00"
+            "time": "2022-06-18T07:21:10+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",
@@ -527,7 +518,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,

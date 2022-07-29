@@ -9,7 +9,6 @@
             "email": "contact@webdevstudios.com"
         }
     ],
-    "minimum-stability": "dev",
     "homepage": "https://wdunderscores.com/",
     "repositories": {
         "wpackagist": {
@@ -39,6 +38,7 @@
         "lint:fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --standard=phpcs.xml --extensions=php ."
     },
     "require": {
-        "webdevstudios/wd_s": "2.1"
+        "composer/installers": "2.0.0",
+        "webdevstudios/wd_s": "3.0"
     }
 }
