@@ -329,6 +329,20 @@ class WDS_Theme_Generator {
 	}
 
 	/**
+	 * Replace contents method for phpcs.xml.json
+	 *
+	 * @param string $contents Current content.
+	 *
+	 * @return string
+	 */
+	private function do_replace_phpcs_xml( $contents ) {
+		$package_name = strtolower( esc_html( $this->theme['namespace'] ) . ',' . str_replace( ' ', '_', esc_html( $this->theme['slug'] ) ) );
+		$contents     = str_replace( 'WebDevStudios\wd_s,wd_s', $package_name, $contents );
+
+		return $contents;
+	}
+
+	/**
 	 * Runs when looping through files contents, does the replacements fun stuff.
 	 */
 	public function do_replacements( $contents, $filename ) {
@@ -352,6 +366,11 @@ class WDS_Theme_Generator {
 			// Special treatment for `composer.json`.
 			if ( 'composer.json' == $filename ) {
 				return $this->do_replace_composer_json( $contents );
+			}
+
+			// Special treatment for phpcs file.
+			if ( 'phpcs.xml.dist' == $filename ) {
+				return $this->do_replace_phpcs_xml( $contents );
 			}
 
 			return $contents;
