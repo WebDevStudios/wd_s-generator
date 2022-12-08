@@ -1,0 +1,40 @@
+{
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://maintainncustomer:e9D32Gmd@packages.wdslab.com"
+    },
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org/"
+    }
+  ],
+  "require": {
+    "wpackagist-plugin/jetpack": "11.6",
+    "webdevstudios/sso-addon": "~1.0",
+    "wpackagist-plugin/wordpress-seo": "19.11",
+    "wpackagist-plugin/limit-login-attempts": "1.7.1",
+    "wpackagist-plugin/page-links-to": "3.3.6"
+  },
+  "extra": {
+    "installer-paths": {
+      "plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "themes/{$name}/": [
+        "type:wordpress-theme"
+      ],
+      "mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
+      ]
+    }
+  },
+  "scripts": {
+    "post-autoload-dump": "WebDevStudios\\MUAutoload\\Installer::install"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  }
+}

@@ -1,0 +1,31 @@
+uploads/**
+blogs.dir/**
+upgrade/**
+backup-db/**
+cache/**
+backups/**
+node_modules/
+.idea/**
+advanced-cache.php
+object-cache.php
+*.log
+.DS_Store
+.AppleDouble
+.LSOverride
+db.php
+vendor/**
+
+## Composer Setup ##
+plugins/jetpack
+plugins/limit-login-attempts
+plugins/page-links-to
+plugins/wds-sso
+plugins/wds-sso-addons-wds
+plugins/wordpress-seo
+
+# Composer mu-plugins
+/mu-plugins/mu-autoload.php
+/mu-plugins/mu-autoload/
+
+# Ignore Default Themes
+/themes/twenty*
