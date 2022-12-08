@@ -20,7 +20,7 @@ plugins/jetpack
 plugins/limit-login-attempts
 plugins/page-links-to
 plugins/wds-sso
-plugins/wds-sso-addons-wds
+plugins/wds-sso-addon-wds
 plugins/wordpress-seo
 
 # Composer mu-plugins
