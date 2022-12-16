@@ -1,25 +1,31 @@
-assets/bower_components/bourbon/
-assets/bower_components/neat/
+uploads/**
+blogs.dir/**
+upgrade/**
+backup-db/**
+cache/**
+backups/**
 node_modules/
-.idea/
-.sass-cache
-*.sublime-project
-.htaccess
-compass_app_log.txt
+.idea/**
+advanced-cache.php
+object-cache.php
 *.log
 .DS_Store
 .AppleDouble
-.LSOverrides
+.LSOverride
+db.php
+vendor/**
 
-#Ignore compiled files
-style.css
-style.min.css
-assets/images/logo.png
-assets/images/placeholder.png
-assets/images/sprites.png
-assets/images/svg-icons.svg
-assets/js/project.js
-assets/js/project.min.js
-languages/wdunderscores.pot
-/vendor/
-inc/prototype/
+## Composer Setup ##
+plugins/jetpack
+plugins/limit-login-attempts
+plugins/page-links-to
+plugins/wds-sso
+plugins/wds-sso-addon-wds
+plugins/wordpress-seo
+
+# Composer mu-plugins
+/mu-plugins/mu-autoload.php
+/mu-plugins/mu-autoload/
+
+# Ignore Default Themes
+/themes/twenty*

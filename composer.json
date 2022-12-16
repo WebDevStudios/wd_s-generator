@@ -1,44 +1,40 @@
 {
-    "name": "webdevstudios/wd_s-generator",
-    "version": "1.0.0",
-    "type": "wordpress-theme",
-    "license": "GPL-3.0",
-    "authors": [
-        {
-            "name": "WebDevStudios",
-            "email": "contact@webdevstudios.com"
-        }
-    ],
-    "homepage": "https://wdunderscores.com/",
-    "repositories": {
-        "wpackagist": {
-            "type": "composer",
-            "url": "https://wpackagist.org"
-        },
-        "wd_s": {
-            "type": "git",
-            "url": "https://github.com/WebDevStudios/wd_s"
-        }
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://maintainncustomer:e9D32Gmd@packages.wdslab.com"
     },
-    "require-dev": {
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-        "phpcompatibility/phpcompatibility-wp": "^2.1.2",
-        "wp-coding-standards/wpcs": "^2.3.0"
-    },
-    "extra": {
-        "installer-name": "wd_s-generator",
-        "installer-paths": {
-            "inc/prototype/": [
-                "type:wordpress-theme"
-            ]
-        }
-    },
-    "scripts": {
-        "lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --standard=phpcs.xml --extensions=php .",
-        "lint:fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --standard=phpcs.xml --extensions=php ."
-    },
-    "require": {
-        "composer/installers": "2.0.0",
-        "webdevstudios/wd_s": "3.0"
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org/"
     }
+  ],
+  "require": {
+    "wpackagist-plugin/jetpack": "11.6",
+    "webdevstudios/sso-addon": "~1.0",
+    "wpackagist-plugin/wordpress-seo": "19.11",
+    "wpackagist-plugin/limit-login-attempts": "1.7.1",
+    "wpackagist-plugin/page-links-to": "3.3.6"
+  },
+  "extra": {
+    "installer-paths": {
+      "plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "themes/{$name}/": [
+        "type:wordpress-theme"
+      ],
+      "mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
+      ]
+    }
+  },
+  "scripts": {
+    "post-autoload-dump": "WebDevStudios\\MUAutoload\\Installer::install"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  }
 }

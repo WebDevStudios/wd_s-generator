@@ -1,0 +1,25 @@
+assets/bower_components/bourbon/
+assets/bower_components/neat/
+node_modules/
+.idea/
+.sass-cache
+*.sublime-project
+.htaccess
+compass_app_log.txt
+*.log
+.DS_Store
+.AppleDouble
+.LSOverrides
+
+#Ignore compiled files
+style.css
+style.min.css
+assets/images/logo.png
+assets/images/placeholder.png
+assets/images/sprites.png
+assets/images/svg-icons.svg
+assets/js/project.js
+assets/js/project.min.js
+languages/wdunderscores.pot
+/vendor/
+inc/prototype/
