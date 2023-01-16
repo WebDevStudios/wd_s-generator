@@ -2,7 +2,7 @@
   "repositories": [
     {
       "type": "composer",
-      "url": "https://maintainncustomer:e9D32Gmd@packages.wdslab.com"
+      "url": "https://packages.wdslab.com"
     },
     {
       "type": "composer",
