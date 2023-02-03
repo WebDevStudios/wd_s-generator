@@ -10,11 +10,11 @@
     }
   ],
   "require": {
-    "wpackagist-plugin/jetpack": "11.6",
     "webdevstudios/sso-addon": "~1.0",
-    "wpackagist-plugin/wordpress-seo": "19.13",
+    "wpackagist-plugin/jetpack": "11.7.1",
     "wpackagist-plugin/limit-login-attempts": "1.7.1",
-    "wpackagist-plugin/page-links-to": "3.3.6"
+    "wpackagist-plugin/page-links-to": "3.3.6",
+    "wpackagist-plugin/wordpress-seo": "19.13"
   },
   "extra": {
     "installer-paths": {
