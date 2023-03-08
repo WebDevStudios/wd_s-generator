@@ -172,7 +172,7 @@ class WDS_Theme_Generator {
 		);
 		$zip->open( $zip_filename, ZipArchive::CREATE && ZipArchive::OVERWRITE );
 
-		$prototype_dir       = dirname( __FILE__ ) . '/prototype/';
+		$prototype_dir       = WP_CONTENT_DIR . '/inc/prototype/';
 		$exclude_files       = array(
 			'.travis.yml',
 			'codesniffer.ruleset.xml',
