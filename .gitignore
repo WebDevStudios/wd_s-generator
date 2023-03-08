@@ -14,7 +14,6 @@ object-cache.php
 .LSOverride
 db.php
 vendor/**
-/inc
 /index.php
 /themes/index.php
 
