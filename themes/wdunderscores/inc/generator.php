@@ -318,7 +318,7 @@ class WDS_Theme_Generator {
 		) . '/' . $this->theme['slug'];
 		$contents     = str_replace( 'webdevstudios/wd_s', $package_name, $contents );
 		$contents     = str_replace( 'WebDevStudios', $this->theme['author'], $contents );
-		$contents     = str_replace( '_s.pot', $this->theme['slug'] . '.pot', $contents );
+		$contents     = str_replace( 'wd_s.pot', $this->theme['slug'] . '.pot', $contents );
 
 		$headers = array(
 			'"description"' => '"' . $this->theme['description'] . '",',
