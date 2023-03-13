@@ -1,0 +1,37 @@
+{
+	"name": "webdevstudios/wd_s",
+	"description": "A starter theme from WebDevStudios.",
+	"type": "wordpress-theme",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "WebDevStudios",
+			"email": "contact@webdevstudios.com"
+		}
+	],
+	"config": {
+		"platform": {
+			"php": "7.4"
+		},
+		"allow-plugins": {
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		},
+		"sort-packages": true
+	},
+	"require": {
+		"composer/installers": "^1.5 || ^2.0.0"
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+		"paulthewalton/acf-pro-stubs": "5.8.9.1",
+		"phpcompatibility/phpcompatibility-wp": "^2.1.1",
+		"wp-cli/wp-cli-bundle": "^2.5.0",
+		"wp-coding-standards/wpcs": "^2.3.0"
+	},
+	"scripts": {
+		"format": "phpcbf --report=summary,source",
+		"lint": "phpcs --report=summary,source",
+		"pot": "wp i18n make-pot . build/languages/wd_s.pot --exclude=node_modules,vendor,build --allow-root"
+	}
+}

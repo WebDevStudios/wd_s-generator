@@ -14,6 +14,8 @@ object-cache.php
 .LSOverride
 db.php
 vendor/**
+/index.php
+/themes/index.php
 
 ## Composer Setup ##
 plugins/jetpack
