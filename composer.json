@@ -11,7 +11,7 @@
   ],
   "require": {
     "webdevstudios/sso-addon": "~1.0",
-    "wpackagist-plugin/jetpack": "11.9.1",
+    "wpackagist-plugin/jetpack": "12.0",
     "wpackagist-plugin/limit-login-attempts": "1.7.1",
     "wpackagist-plugin/page-links-to": "3.3.6",
     "wpackagist-plugin/wordpress-seo": "20.4"
