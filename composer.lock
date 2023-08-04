@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f32950a4a723baa3bfc8633e6e07ab60",
+    "content-hash": "0bf86324f3209f25a4a1d1ca24fd5d83",
     "packages": [
         {
             "name": "composer/installers",
@@ -1503,15 +1503,15 @@
         },
         {
             "name": "wpackagist-plugin/jetpack",
-            "version": "12.3",
+            "version": "12.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/12.3"
+                "reference": "tags/12.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.12.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/jetpack.12.4.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
