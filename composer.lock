@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "34544ec08632d34d88e4d797cd02bcb6",
+    "content-hash": "45cbf3f687c4c792ec971e18697355c7",
     "packages": [
         {
             "name": "composer/installers",
@@ -1503,15 +1503,15 @@
         },
         {
             "name": "wpackagist-plugin/jetpack",
-            "version": "12.4",
+            "version": "12.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/12.4"
+                "reference": "tags/12.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.12.4.zip"
+                "url": "https://downloads.wordpress.org/plugin/jetpack.12.5.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1557,15 +1557,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "20.13",
+            "version": "21.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/20.13"
+                "reference": "tags/21.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.20.13.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.21.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
