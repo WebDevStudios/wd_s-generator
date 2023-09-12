@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d2dec8104fc16f85c4c950bc0e761a95",
+    "content-hash": "38872a675aeb2652d063dc40c33b45fb",
     "packages": [
         {
             "name": "composer/installers",
@@ -1407,6 +1407,36 @@
                 }
             ],
             "time": "2023-05-23T14:45:45+00:00"
+        },
+        {
+            "name": "webdevstudios/mu-autoload",
+            "version": "v1.6",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:WebDevStudios/mu-autoload.git",
+                "reference": "dfcdba4a012df251e329da27238c4730c96c39f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packages.wdslab.com/dist/webdevstudios/mu-autoload/webdevstudios-mu-autoload-v1.6-4d92f0.zip",
+                "reference": "dfcdba4a012df251e329da27238c4730c96c39f9"
+            },
+            "require": {
+                "composer/installers": "^2.0"
+            },
+            "type": "wordpress-muplugin",
+            "autoload": {
+                "psr-4": {
+                    "WebDevStudios\\MUAutoload\\": "src/"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "WebDevStudios\\MUAutoload\\Installer::install"
+                ]
+            },
+            "description": "Generates a file in mu-plugins to include your project's autoload.php",
+            "time": "2023-09-08T17:48:41+00:00"
         },
         {
             "name": "webdevstudios/sso",
