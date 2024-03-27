@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f769de93d7ca5dfea0e614ae8df727ca",
+    "content-hash": "d664919d116f84d80675f0eeb2115da5",
     "packages": [
         {
             "name": "composer/installers",
@@ -1590,15 +1590,15 @@
         },
         {
             "name": "wpackagist-plugin/page-links-to",
-            "version": "3.3.6",
+            "version": "3.3.7",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/page-links-to/",
-                "reference": "tags/3.3.6"
+                "reference": "tags/3.3.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/page-links-to.3.3.6.zip"
+                "url": "https://downloads.wordpress.org/plugin/page-links-to.3.3.7.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
