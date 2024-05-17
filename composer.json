@@ -12,7 +12,7 @@
   "require": {
     "webdevstudios/mu-autoload": "^1.6",
     "webdevstudios/sso-addon": "1.1.0",
-    "wpackagist-plugin/jetpack": "13.4.1",
+    "wpackagist-plugin/jetpack": "13.4.3",
     "wpackagist-plugin/limit-login-attempts": "1.7.2",
     "wpackagist-plugin/page-links-to": "3.3.7",
     "wpackagist-plugin/wordpress-seo": "22.7"
