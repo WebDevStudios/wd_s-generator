@@ -15,7 +15,7 @@
     "wpackagist-plugin/jetpack": "13.6",
     "wpackagist-plugin/limit-login-attempts": "1.7.2",
     "wpackagist-plugin/page-links-to": "3.3.7",
-    "wpackagist-plugin/wordpress-seo": "23.1"
+    "wpackagist-plugin/wordpress-seo": "23.2"
   },
   "extra": {
     "installer-paths": {
