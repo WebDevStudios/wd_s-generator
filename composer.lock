@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a13bb388a39ba5c5ee51d34a736c7f73",
+    "content-hash": "164a162e526f2c34ae0405d4302dd713",
     "packages": [
         {
             "name": "composer/installers",
@@ -1554,15 +1554,15 @@
         },
         {
             "name": "wpackagist-plugin/jetpack",
-            "version": "15.5",
+            "version": "15.6",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/15.5"
+                "reference": "tags/15.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.15.5.zip"
+                "url": "https://downloads.wordpress.org/plugin/jetpack.15.6.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1590,15 +1590,15 @@
         },
         {
             "name": "wpackagist-plugin/page-links-to",
-            "version": "3.3.7",
+            "version": "3.4.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/page-links-to/",
-                "reference": "tags/3.3.7"
+                "reference": "tags/3.4.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/page-links-to.3.3.7.zip"
+                "url": "https://downloads.wordpress.org/plugin/page-links-to.3.4.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1608,15 +1608,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "26.9",
+            "version": "27.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/26.9"
+                "reference": "tags/27.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.26.9.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.27.3.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1633,5 +1633,5 @@
     "prefer-lowest": false,
     "platform": {},
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
